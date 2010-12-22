@@ -1,0 +1,41 @@
+\bg{0.675}{-0.9}
+
+\newcommand{\rA}{0.3}
+\newcommand{\rB}{2.55}
+
+\path[name path=A]
+	(-2.3,0) coordinate(AM)
+	arc[start angle=0, end angle=-180, radius=\rA];
+
+\path[name path=B]
+	(0,-3.05) coordinate(BB)
+	++(0,\rB) coordinate(BM) circle(\rB);
+\path[name path=C] (0,0) -- (3,0);
+\path[name intersections={of=A and B}] (intersection-1) coordinate(CL);
+\path[name intersections={of=B and C}] (intersection-1) coordinate(CR);
+
+\draw
+	let \p0=(BM), \p1=(CL), \p2=(CR), \n0={180 + atan((\y0-\y1)/(\x0-\x1))}, \n1={atan((\y0-\y2)/(\x0-\x2))} in
+		(CL) arc[start angle=\n0, end angle={360 + \n1}, radius=\rB]
+
+	(AM) ++(-\rA,0) circle(\rA)
+	(AM) -- ++(6.5,0) coordinate(R)
+
+	\foreach \XS in {-1,1} {
+		let \n0={1.45}, \n1={0.275} in
+			(-\n0,0) ++(0,\rA * \XS) circle(\rA)
+			(\n0,0) -- ++(0,\XS * 2 * \n1) ++(-\n1,0) -- ++(2 * \n1,0)
+
+		(BM) ++(-90 + \XS * 31:\rB - \rA) circle(\rA)
+
+		(R) -- ++(180 + \XS * 26:1.2)
+
+		let \n2={0.95} in
+			(0,0) arc[start angle=-90, delta angle={110 * \XS}, radius=\n2]
+			(0,0) -- ++(-90 + \XS * 30:1.8) coordinate(t\XS)
+	}
+
+	(t-1) -- (t1)
+
+	(BB |- t1) -- (BB)
+	;
