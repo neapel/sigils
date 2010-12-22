@@ -1,0 +1,28 @@
+%\bg{0}{0.25-1}
+
+\draw
+	let \n0={0.875} in
+		(0,0) -- (0,\n0)
+		(0,0) -- (0,-2 * \n0) coordinate(b0)
+		-- ++(0,-0.6) coordinate(t0)
+		let \n1={0.65} in (b0) -- ++(-\n1,0) -- ++(2 * \n1,0)
+
+		\foreach \XS in {-1,1} {[xscale=\XS]
+			(0,0) -- (\n0,0) coordinate(v0) -- ++(2 * \n0,0) coordinate(v1)
+			++(0,\n0) coordinate(v2)
+			arc[start angle=90, end angle=270, radius=\n0] coordinate(v3)
+			let \n2={0.25} in
+				(v1) ++(-\n2,0) coordinate(v1)
+				\foreach \K in {v1, v2, v3} {
+					(\K) ++(0,-\n2) -- ++(0,2 * \n2)
+				}
+			(v0) -- ++(0,\n0) coordinate(t\XS)
+			(v0) -- ++(0,-\n0)
+			arc[start angle=90, end angle=-90, radius=\n0]
+		}
+
+		\foreach \K/\R in {t-1/0, t0/180, t1/0} {[rotate=\R]
+			let \n3={0.45} in
+				(\K) ++(\n3,\n3) -- (\K) -- ++(-\n3, \n3) -- cycle
+		}
+	;
