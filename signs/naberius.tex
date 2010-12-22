@@ -1,0 +1,16 @@
+\bg{0.25}{0}
+
+\draw
+	let \n0={0.65}, \n1={2.5} in
+		(0,\n1) circle(\n0)
+		(0,-\n1) circle(\n0)
+	let \n2={2.2}, \n3={0.45}, \n4={105}, \n5={210}, \n0={0.8} in
+		(\n2,\n3) -- (-\n2,\n3)
+			arc[start angle=\n4, end angle=\n5, radius=\n0]
+		(\n2,-\n3) -- (-\n2,-\n3)
+	let \n3={1.3} in
+		(-\n2,\n3) -- ++(2 * \n2,0)
+			arc[start angle=90, end angle=-90, y radius=\n3, x radius={0.85 * \n3}]
+			-- ++(-2 * \n2,0)
+			arc[start angle=\n4, end angle=\n5, radius=\n0]
+	;
