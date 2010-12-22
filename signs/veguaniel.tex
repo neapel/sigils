@@ -1,0 +1,27 @@
+%\bg{0.1}{-0.1}
+
+\draw
+	let \n0={2.475}, \n1={1.15} in
+		(-\n0,\n1) coordinate(a)
+		-- ++(0,-\n1)
+		arc[start angle=180, end angle=360, radius=\n0]
+		-- ++(0,\n1) coordinate(b)
+	
+	{[rotate=45]
+		(a) rectangle ++(45:1.85)
+	}
+
+	let \n2={1} in
+		\foreach \R in {0,...,8} {
+			(b) ++(0,\n2) ++(-90 + \R * 360 / 9:\n2) coordinate(k\R)
+		}
+		(k0) -- (k4) -- (k8) -- (k3) -- (k7) -- (k2) -- (k6) -- (k1) -- (k5) -- cycle
+
+	(b) ++(0,-0.625) coordinate(c)
+	let \n3={0.65} in
+		(c) -- ++(-3 * \n3,0) ++(\n3,-\n3) -- ++(0,2 * \n3)
+	let \n4={0.575} in
+		(c) -- ++(\n4,0) coordinate(d)
+		-- ++(\n4,0) -- ++(0,-2.7)
+		(d) -- ++(0,-3.8)
+	;
