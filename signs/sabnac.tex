@@ -1,0 +1,33 @@
+\bg{0.75 + 0.0125}{1.15}
+
+\draw
+	
+	let \n0={0.55}, \n1={0.25} in
+		(0,0) -- ++(-2.2,0) -- ++(\n0,\n0) -- ++(0,-\n0)
+		(0,0) -- ++(1.8,0) coordinate(t)
+		(t) ++(-\n0, \n0) -- (t) -- ++(-\n0, -\n0) -- cycle
+		(t) -- ++(0.4,0) coordinate(g)
+		-- ++(0.95,0) ++(\n1,0) circle(\n1)
+		let \n2={0.3}, \n3={0.4} in
+			(g) ++(0,3 * \n2) rectangle ++(\n3, -6 * \n2)
+			\foreach \Y in {-2,-1,1,2} {
+				(g) ++(0, \Y * \n2) -- ++(\n3,0)
+			}
+
+		(0,0) -- ++(0, -0.45) ++(0, -\n1) circle(\n1)
+
+		(0,0) -- ++(0, 0.9) coordinate(a)
+
+	\foreach \XS in {-1,1} {[xscale=\XS]
+		(a) arc[start angle=-90, end angle=0, radius=0.725]
+		-- ++(0,0.95) coordinate(T\XS) ++(0,\n1) circle(\n1)
+		let \n4={0.85} in
+			(T\XS) -- ++(\n4,0)
+			arc[start angle=90, end angle=-90, radius=\n1]
+			-- ++(-\n4,0) coordinate(B\XS)
+	}
+
+	(T-1) -- (T1)
+	(B-1) -- (B1)
+
+	;
