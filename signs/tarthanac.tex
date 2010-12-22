@@ -1,0 +1,21 @@
+%\bg{0}{-0.525}
+
+\draw
+	let \n0={2.5} in
+		(-\n0,0) -- (\n0,0)
+	let \n1={1} in
+		(0,2) circle(\n1)
+		++(0,-\n1) -- (0,-4)
+	let \n2={1.2} in
+		++(0,\n2) circle(\n2)
+	
+	let \n3={0.6} in
+		(-1,-1) rectangle (1,\n3)
+		{[rotate=(atan(\n3))]
+			(0,0) -- (2.65,0) coordinate(x)
+			\foreach \XS in {-1,1} {
+				(x) -- ++(180 + 30 * \XS:0.9)
+			}
+		}
+
+	;
