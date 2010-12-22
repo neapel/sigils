@@ -1,0 +1,36 @@
+\bg{-0.45}{0.15}
+
+\begin{scope}[rotate=-16.5]
+	\draw[help lines] (-4,-4) grid (4,4);
+
+	\draw[thick,orange]
+		let \n0={3.35} in
+			(0,0) circle(\n0);
+
+	\newcommand{\radiA}{2.0}
+	\newcommand{\xA}{0.9}
+	\newcommand{\xB}{-0.3}
+
+	\draw[thick,orange]
+		(\xA,0) coordinate(sA) circle(1pt)
+		(\xB,0) coordinate(sB) circle(2pt)
+		(sB) ++(\radiA,0) coordinate(L)
+		($(L) + (L)$) coordinate(radiB)
+		(sA) ++(\radiA,0) coordinate(R)
+		($(R) - (radiB)$) coordinate(lB)
+		;
+
+	\draw[red,thick,dotted,name path=psA] (sA) circle(\radiA);
+	\draw[red,thick,dashed,name path=psB] (sB) circle(\radiA);
+	\draw[blue,thick,dotted,name path=plA]
+		let \p0=(radiB) in (L) circle(\x0);
+	\draw[blue,thick,dashed,name path=plB]
+		let \p0=(radiB) in (lB) circle(\x0);
+
+	\draw[name intersections={of=psA and psB}]
+		(intersection-1) coordinate(is) circle(2pt);
+
+	\draw[name intersections={of=plA and plB}]
+		(intersection-1) coordinate(il) circle(2pt);
+	
+\end{scope}
