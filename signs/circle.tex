@@ -14,13 +14,43 @@
 \draw[blue, rotate=22] (4.95,0) circle(2pt);
 \draw[blue, rotate=43] (4.9,0) circle(2pt);
 \draw[blue, rotate=60] (4.9,0) circle(2pt);
-\draw[blue, rotate=92] (4.9,0) circle(2pt);
-\draw[blue, rotate=108] (5,0) circle(2pt);
-\draw[blue, rotate=119] (5.3,0) circle(2pt);
-\draw[blue, rotate=135] (4.85,0) circle(2pt);
-\draw[blue, rotate=135] (4.85,0) circle(2pt);
 
-\draw[blue, rotate=141] (5.3,0) circle(2pt);
+\draw[rotate=92]
+	(4.9,0)
+	arc[start angle=140, end angle=360, radius=0.325]
+	-- ++(-60:0.4)
+	-- ++(50:0.4)
+	-- ++(-65:0.45)
+	;
+
+\draw[rotate=108]
+	(5,0)
+	arc[start angle=130, end angle=300, radius=0.275]
+	arc[start angle={300 - 90 - 30}, end angle=300, radius=0.25]
+	arc[start angle={300 - 90}, end angle=380, radius=0.225]
+	;
+
+\draw[rotate=119]
+	(5.3,0)
+	arc[start angle=155, end angle=340, radius=0.25]
+	arc[start angle={340 - 180}, end angle=360, radius=0.125]
+	;
+
+\draw[rotate=135]
+	(4.85,0)
+	-- ++(-75:0.55)
+	arc[start angle={-75 - 90}, end angle=-20, radius=0.25]
+	-- ++(-50:0.7)
+	-- ++(83:0.9)
+	;
+
+\draw[rotate=141]
+	(5.3,0)
+	-- ++(110:1.25) coordinate(a)
+	-- ++(-50:1.05)
+	(a) -- ++(-25:0.7)
+	arc[start angle={-25 - 90}, end angle=120, radius=0.275]
+	;
 
 \draw[rotate=165]
 	(5.0,0)
