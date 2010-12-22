@@ -1,0 +1,43 @@
+\bg{-0.2}{-0.25}
+
+\draw
+	let \n0={0.55}, \n1={0.22}, \n2={0.525} in
+	
+
+	\foreach \YS in {-1,1} {[yscale=\YS]
+		\foreach \XS in {-1,1} {[xscale=\XS]
+			(\n0,0) -- ++(0,2 * \n1) ++(0,\n1) circle(\n1)
+			(2 * \n0,0) ++(0, 6 * \n1) coordinate(K\XS\YS)
+		}
+		(0,6 * \n1) coordinate(K0\YS)
+
+		(3 * \n2 + \n1, 0) coordinate(k)
+		++(\n2 + \n1, 6 * \n1) coordinate(K2\YS)
+		(k) -- ++(0, 3 * \n1)
+		let \n3={0.35} in ++(-\n3, 0) -- ++(2 * \n3, 0)
+
+	}
+
+	(K11) -- (K1-1) -- (K2-1) -- (K21)
+	-- (K-11) -- ++(-0.95,0) coordinate(t)
+
+	let \n3={0.7} in
+		(t) ++(-\n3,\n3) -- (t) -- ++(-\n3,-\n3) -- cycle
+
+	let \n3={0.3} in
+		(K0-1) circle(\n3) ++(0,\n3) -- (K01)
+		(K-1-1) circle(\n3) ++(0,\n3) -- (K-11)
+
+	let \n3={0.6}, \n4={333} in
+		(K1-1) arc[start angle=90, end angle=\n4, radius=\n3] coordinate(a)
+		(K1-1) ++(\n3,-\n3) coordinate(b)
+		let \p0=(a), \p1=(b), \n5={sqrt((\x0 - \x1)^2 + (\y0 - \y1)^2)} in
+			(b) circle(\n5)
+
+	(0,0) coordinate(Z)
+
+	(Z -| K21) -- (Z -| K-11) -- ++(-0.7,0)
+	arc[start angle=90, end angle=190, radius=1.1]
+	++(0.7, 0.35) circle(\n1)
+
+	;
