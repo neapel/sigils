@@ -1,0 +1,11 @@
+%\bg{0.4}{0.15}
+
+\draw
+	(-3,-1) grid[step=1] ++(2,2)
+	++(0,-1) -- ++(1,0)
+	arc[start angle=130, end angle=350, radius=0.5]
+	let \n0={35}, \n1={12}, \n2={0.5} in
+	arc[start angle=-165, end angle=\n0, radius=0.6]
+	arc[start angle={180 + \n0}, end angle={0 * \n1}, radius=0.8]
+	++(\n1:-\n2) -- ++(\n1:2 * \n2)
+	;
