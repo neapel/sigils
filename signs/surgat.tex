@@ -1,0 +1,19 @@
+\bg{0.5}{0.2}
+
+\draw
+	(2.9,0) -- ++(-4.2,0)
+	let \n0={37} in
+		arc[start angle=-\n0, end angle={-360 + \n0}, radius=0.8]
+	-- ++(4.05,0)
+
+	let \n1={1.7} in
+		(0,0) -- (0,1.5)
+		arc[start angle=180, end angle=45, radius=\n1]
+
+	let \n2={0.75}, \n3={1.85} in
+		(\n1, -1) coordinate(t)
+		(t) ++(\n2,-\n3) -- (t) -- ++(-\n2,-\n3) -- cycle
+
+	(0,0) -- (0,-1.95) -- ++(3.15,0)
+	arc[start angle=-90, end angle=90, radius=0.55]
+	;
