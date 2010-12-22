@@ -3,12 +3,12 @@
 % TODO finish
 
 \foreach \R in {0,10,...,360} {
-	\draw[thin, blue] (0,0) -- (\R:6.5);
+%	\draw[thin, blue] (0,0) -- (\R:6.5);
 }
 
 \draw
-	%let \n0={4.55}, \n1={6.45} in
-	%(0,0) circle(\n0) circle(\n0/2 + \n1/2) circle(\n1)
+	let \n0={4.55}, \n1={6.45} in
+	(0,0) circle(\n0) circle(\n1)
 	;
 
 \draw[blue, rotate=22] (4.95,0) circle(2pt);
@@ -24,12 +24,33 @@
 \draw[blue, rotate=185] (5.1,0) circle(2pt);
 \draw[blue, rotate=227] (5.2,0) circle(2pt);
 \draw[blue, rotate=238] (4.8,0) circle(2pt);
-\draw[blue, rotate=248] (5.0,0) circle(2pt);
+
+\draw[rotate=248]
+	(5.0,0)
+	-- ++(65:1.9)
+	-- ++(-80:1.45)
+	-- ++(143:1.8)
+	;
+
 \draw[blue, rotate=271] (4.9,0) circle(2pt);
 \draw[blue, rotate=291] (4.9,0) circle(2pt);
 \draw[blue, rotate=299] (5.2,0) circle(2pt);
-\draw[blue, rotate=320] (4.9,0) circle(2pt);
-\draw[blue, rotate=328] (5.9,0) circle(2pt);
+
+\draw[rotate=320]
+	(4.9,0)
+	arc[start angle=-200, delta angle=180, radius=0.325]
+	-- ++(-50:0.45)
+	-- ++(55:0.55)
+	;
+
+\draw[rotate=328]
+	(5.9,0)
+	-- ++(95:0.8)
+	-- ++(185:0.75)
+	arc[start angle={185 - 90}, end angle=230, radius=0.2]
+	arc[start angle={230 + 180}, delta angle=-95, radius=0.35]
+	;
+
 \draw[blue, rotate=350] (5.5,0) circle(2pt);
 
 \draw[blue, rotate=310] (1,0) circle(2pt);
