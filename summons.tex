@@ -8,15 +8,14 @@
 %% FONTS
 \font\signNameFont="Interstate:embolden=2" at 27pt
 \font\signDescFont="Interstate:letterspace=4,embolden=5" at 14pt
-\font\mainTitleFont="Interstate:extend=1.05,letterspace=2" at 62pt
-\font\secTitleFont="Interstate:extend=1.05,letterspace=5:embolden=0.4" at 50pt %60pt
-\font\bottomTitleFont="Interstate:extend=1.05,letterspace=1" at 65pt
+\font\mainTitleFont="Interstate:extend=1.05,letterspace=2,embolden=0.4" at 62pt
+\font\secTitleFont="Interstate:extend=1.05,letterspace=5,embolden=0.6" at 50pt %60pt
+\font\bottomTitleFont="Interstate:extend=1.05,letterspace=1,embolden=0.4" at 65pt
 
 \renewcommand{\baselinestretch}{1.0}
 
 \newcommand{\K}{\hspace{1.2ex}}
 
-\color{red}
 
 %% POSITIONING
 \newcommand{\baselineStart}{-123.5mm}
@@ -56,11 +55,7 @@
 			line cap=round,
 			line join=round
 		]
-			\node {\texname};
-		%	\InputIfFileExists{\texname}{}%
-		%	{%
-		%		\draw[] (0,0) circle(3);
-		%	}
+			\input{\texname}
 		\end{tikzpicture}}
 		;
 }
@@ -94,7 +89,7 @@
 \centering
 \begin{tikzpicture}
 	\draw(0,0)node[anchor=north]{
-		\includegraphics[scale=2.25]{summons-cropped.png}
+%		\includegraphics[scale=2.25]{summons-cropped.png}
 	};
 
 	\firstrow
