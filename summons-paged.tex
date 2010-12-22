@@ -15,8 +15,6 @@
 
 \newcommand{\sign}[3][\defname]{
 	\def\defname{#2}
-	\textsc{#1}
-
 	\caselower[q]{#2}
 	\edef\filename{signs/\thestring.png}
 	\begin{tikzpicture}
@@ -24,6 +22,7 @@
 		\InputIfFileExists{signs/\thestring.tex}{}{\bg{0}{0}}
 		\draw[help lines](-5,-5) grid (5,5);
 		\fill[blue](0,0) circle(2pt);
+		\draw[black] (0,3)node[font=\Huge\tt,opacity=0.2]{\thestring};
 	\end{tikzpicture}
 	%\vfill
 	%#3
@@ -72,7 +71,7 @@
 	%\sign{Hagith}{Demon of Jealousy}
 	%\sign{Hagonel}{Lord under Grachiel}
 	\sign{Hamaliel}{Lord of Obsessions}
-	\sign{Hanael}{The Adversarial}
+	%\sign{Hanael}{The Adversarial}
 \begin{verbatim}
 	\sign[Hasmodel \ Hasmodai]{hasmodel}{The Twin Bulls}
 	\sign{Hismael}{The Acquirer}
