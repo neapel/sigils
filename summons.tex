@@ -12,12 +12,14 @@
 \font\mainTitleFont="Interstate" at 72pt
 \font\secTitleFont="Interstate" at 60pt
 \font\bottomTitleFont="Interstate" at 75pt
+\font\specialSignFont="Interstate" at 20pt
 
 \newcommand{\signName}[1]{\uppercase{\signNameFont #1}}
 \newcommand{\signDesc}[1]{\uppercase{\signDescFont #1}}
 \newcommand{\mainTitle}[1]{\uppercase{\mainTitleFont #1}}
 \newcommand{\secTitle}[1]{\uppercase{\secTitleFont #1}}
 \newcommand{\bottomTitle}[1]{\uppercase{\bottomTitleFont #1}}
+\newcommand{\specialSign}[1]{\uppercase{\specialSignFont #1}}
 
 %% POSITIONING
 \newcommand{\baselineStart}{-123.5mm}
@@ -43,14 +45,14 @@
 	\setcounter{SignColumn}{0}
 }
 
-\newcommand{\xsign}[2][0mm]{
-	\stepcounter{SignColumn}
-	\caselower[q]{#2}\edef\texname{signs/\thestring.tex}
-	\edef\columnName{Column\theSignColumn}
+\newcommand{\bg}[2]{} % debug
+
+\newcommand{\hsign}[3]{%
+	\caselower[q]{#2}
+	\edef\texname{signs/\thestring.tex}
 	%
 	\draw
-		(\columnName) coordinate(Column)
-		(Column |- Baseline) coordinate(SignHere)
+		#3 coordinate(SignHere)
 		(SignHere)++(0,#1)node{\begin{tikzpicture}[
 			scale=0.75,
 			ultra thick,
@@ -61,8 +63,15 @@
 		\end{tikzpicture}}
 		;
 }
+\newcommand{\xsign}[2][0mm]{%
+	\stepcounter{SignColumn}
+	\edef\columnName{Column\theSignColumn}
+	\hsign{#1}{#2}{%
+		(\columnName) coordinate(Column)
+		(Column |- Baseline)}
+}
 
-\newcommand{\sign}[3][\defname]{
+\newcommand{\sign}[3][\defname]{%
 	\def\defname{\signName{#2}}
 	\xsign[40mm]{#2}
 	%
@@ -190,18 +199,42 @@
 	\draw(Baseline)++(0,-18mm)node[anchor=north]{%
 		\secTitle{Other Sigils of necissity include:}};
 	\newrow
-	\xsign{common1}{}
-	\xsign{common2}{}
-	\xsign{common3}{}
-	\xsign{common4}{}
-	\xsign{unholy}{A common Sigil needed to summon an Unholy Power}
-	\xsign{kaliyuga}{An Ancient Sorcery}
-	\xsign{myriad}{To summon a Myriad which is 20,736 of Hell's Minions}
-	\xsign{union}{To request a fiendish Union with Incubi or Succubi}
-	\xsign{circle}{The Great Circle of Summoning}
+	\newcommand{\TextHere}{++(0,-30mm)}
+
+	\xsign{common1}
+	\xsign{common2}
+	\xsign{common3}
+	\xsign{common4}
+	\draw ($(Column2)!0.5!(Column3)$) coordinate(Column25)
+	(Column25 |- Baseline)\TextHere node[anchor=north]{%
+		\specialSign{TODO}};
+
+	\xsign{unholy}
+	\draw (SignHere)\TextHere node[anchor=north, text width=55mm, align=center]{%
+		\specialSign{A common Sigil needed to summon an Unholy Power}};
+
+	\xsign{kaliyuga}
+	\draw (SignHere)\TextHere node[anchor=north]{%
+		\specialSign{An Ancient Sorcery}};
+
+	\xsign{myriad}
+	\draw (SignHere)\TextHere node[anchor=north, text width=55mm, align=center]{%
+		\specialSign{To summon a Myriad which is 20,736 of Hell's Minions}};
+
+	\xsign{union}
+	\draw(SignHere)\TextHere node[anchor=north, text width=55mm, align=center]{%
+		\specialSign{To request a fiendish Union with Incubi or Succubi}};
+
+	\hsign{10mm}{circle}{%
+		($(Column9)!0.5!(Column10)$) coordinate(Column95)
+		(Column95 |- Baseline)}
+	\draw(SignHere)\TextHere node[anchor=north]{%
+		\specialSign{The Great Circle of Summoning}};
 
 	\draw(Baseline)++(0,-80mm)node[align=center]{%
 		\bottomTitle{Warning: This knowledge to be used only}\\%
-		\bottomTitle{in times of extreme emergency}};
+		\bottomTitle{in times of extreme emergency}}
+		
+	;
 \end{tikzpicture}
 \end{document}
