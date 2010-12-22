@@ -1,1 +1,45 @@
 \bg{0}{0.15}
+
+\draw
+	(0, 0) coordinate(Z)
+
+	% People
+	let \n0={0.4}, \n1={0.2} in
+		(4 * \n0, 1.95) coordinate(S) (S) -- (S |- Z)
+
+		\foreach \X in {0,1,2} {
+			(S) ++(-\n0, \n0 + \n1) circle(\n1)
+			(S) arc[start angle=0, end angle=180, radius=\n0]
+			coordinate(S)
+			-- (S |- Z)
+		}
+
+	let \n0={0.44}, \n2={214}, \n3={1.5} in
+		(S) ++(0,-\n1) coordinate(S)
+		(S) ++(-\n0, \n0 + \n1) circle(\n1)
+
+		(S) arc[start angle=0, end angle=\n2, radius=\n0]
+		coordinate(c)
+		arc[start angle={\n2 + 180}, delta angle=-98, radius=\n3]
+
+	% Below
+	(c) ++(\n2 + 180:-\n3) ++(-45:\n3)
+	let \n4={0.825} in
+		-- ++(0,-\n4) coordinate(B)
+		-- ++(0,-\n4) coordinate(T)
+
+	let \n4={0.45} in
+		(T) ++(\n4,-\n4) -- (T) -- ++(-\n4,-\n4) -- cycle
+
+
+	\foreach \XS in {1,-1} {[xscale=\XS]
+		% Boat
+		(Z) -- ++(1.9,0) coordinate(A)
+		arc[start angle=-90, end angle=45, radius=1]
+
+		% Below
+		(B -| Z) -- (B -| A) -- ++(0.65,0)
+		let \n4={0.3} in ++(\n4,0) circle(\n4)
+	}
+
+	;
