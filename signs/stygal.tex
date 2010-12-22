@@ -1,36 +1,42 @@
-\bg{-0.45}{0.15}
+\bg{-0.05}{0}
 
 \begin{scope}[rotate=-16.5]
 	\draw[help lines] (-4,-4) grid (4,4);
 
-	\draw[thick,orange]
-		let \n0={3.35} in
-			(0,0) circle(\n0);
+	\newcommand{\rA}{3.35}
+	\newcommand{\fact}{0.31}
+	\newcommand{\rB}{\rA * 2 * \fact}
 
-	\newcommand{\radiA}{2.0}
-	\newcommand{\xA}{0.9}
-	\newcommand{\xB}{-0.3}
+	\path[name path=A0] (0,0) circle(\rA);
+	\path[name path=A1] (\rB,0) coordinate(A1M) circle(\rA);
+	\path[name path=B0] (0,0) circle(\rB);
+	\path[name path=B1] (\rA - \rB,0) coordinate(B1M) circle(\rB);
 
-	\draw[thick,orange]
-		(\xA,0) coordinate(sA) circle(1pt)
-		(\xB,0) coordinate(sB) circle(2pt)
-		(sB) ++(\radiA,0) coordinate(L)
-		($(L) + (L)$) coordinate(radiB)
-		(sA) ++(\radiA,0) coordinate(R)
-		($(R) - (radiB)$) coordinate(lB)
+	\draw[name intersections={of=A0 and A1}]
+		(intersection-1) coordinate(AS);
+	\draw[name intersections={of=B0 and B1}]
+		(intersection-1) coordinate(BS);
+
+	\draw
+		% left moon
+		let \p0=(AS), \n0={atan(\y0 / \x0)} in
+		(AS) arc[start angle=\n0, end angle={360 - \n0}, radius=\rA]
+		let \p1=(A1M), \n3={180 + atan((\y1-\y0)/(\x1-\x0))} in
+		arc[start angle={360 - \n3}, end angle={\n3}, radius=\rA] -- cycle
+
+		% right moon
+		let \p0=(BS), \n0={atan(\y0 / \x0)} in
+		(BS) arc[start angle=\n0, end angle=-\n0, radius=\rB]
+		let \p1=(B1M), \n3={180 + atan((\y1-\y0)/(\x1-\x0))} in
+		arc[start angle=-\n3, end angle=\n3, radius=\rB] -- cycle
+
+		% line
+		(A1M) -- ++(-\rA,0)
+		(A1M)++(-0.5 * \rA,0) coordinate(k)
+		let \n0={0.85}, \n1={0.2} in
+			(k) -- ++(0,\n0) ++(0,\n1) circle(\n1)
+			(k) -- ++(0,-\n0) ++(0,-\n1) circle(\n1)
 		;
 
-	\draw[red,thick,dotted,name path=psA] (sA) circle(\radiA);
-	\draw[red,thick,dashed,name path=psB] (sB) circle(\radiA);
-	\draw[blue,thick,dotted,name path=plA]
-		let \p0=(radiB) in (L) circle(\x0);
-	\draw[blue,thick,dashed,name path=plB]
-		let \p0=(radiB) in (lB) circle(\x0);
 
-	\draw[name intersections={of=psA and psB}]
-		(intersection-1) coordinate(is) circle(2pt);
-
-	\draw[name intersections={of=plA and plB}]
-		(intersection-1) coordinate(il) circle(2pt);
-	
 \end{scope}
