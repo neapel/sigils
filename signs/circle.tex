@@ -174,7 +174,29 @@
 	(d) arc[start angle=260, end angle=70, radius=0.275]
 	;
 
-\draw[orange, rotate=310] (1,0) circle(2pt);
+\draw[rotate=310]
+	let \n0={203}, \n1={-12}, \n2={-105}, \n3={0.575}, \n4={-160}, \n5={-90} in
+	(1,0) coordinate(a)
+	(a) -- ++(0,2.45) coordinate(b)
+	arc[start angle=0, end angle=\n0, radius=0.35]
+	arc[start angle={\n0 + 180}, delta angle=-61, radius=1.5]
+	arc[start angle=0, end angle=190, radius=0.38]
+	arc[start angle=-10, end angle=55, radius=0.7]
+	(b) -- ++(0,0.25)
+	arc[start angle=180, end angle=\n1, radius=0.29]
+	-- ++(\n1 - 90:0.4)
+	arc[start angle=150, delta angle=-220, radius=0.3]
+	(a) -- ++(0,-0.85)
+	arc[start angle=0, end angle=\n2, radius=\n3]
+	coordinate(c)
+	arc[start angle=\n2, delta angle=-200, radius=0.275]
+	(c)
+	arc[start angle=\n2, end angle=\n4, radius=\n3]
+	-- ++(\n4 - 90:0.4)
+	arc[start angle={\n4 + 180}, end angle=\n5, radius=0.4]
+	-- ++(\n5 - 90:0.3)
+	arc[start angle=\n5, end angle=-250, radius=0.15]
+	;
 
 \draw[rotate=139]
 	(3.4,0)
