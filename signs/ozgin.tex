@@ -1,6 +1,8 @@
 \bg{0.05}{0}
 
 \newcommand{\radi}{3.45}
+\newcommand{\radj}{1.45}
+\newcommand{\radk}{2.45}
 
 \draw[name path=A] (0,0) circle(\radi);
 
@@ -9,15 +11,90 @@
 	(137.5:\radi) coordinate(lt)
 
 	let \p0=(lb), \p1=(lt), \n0={\x1 - \x0}, \n1={\y1 - \y0},
-	\n2={1.725}, \n3={0.22} in
-		(lt) -- ++(\n0,-\n1)
-		(lb) -- ++(\n0,0) coordinate(A) circle(2pt)
-		-- ++(\n2,0) coordinate(B) circle(2pt)
-		++(0,-0.8) coordinate(C) circle(2pt)
+	\n2={1.725}, \n3={0.22}, \n4={0.8}, \n5={0.35}, \n6={0.5 * \n2 - \n5}, \n7={2 * \n4 + 2 * \n6 + \n5} in
+		%(lt) -- ++(\n0,-\n1)
+		(lb) ++(\n0,0) coordinate(A)
+		++(\n2,0) coordinate(B)
+		-- ++(0,-\n4) coordinate(C)
+		(B) ++(\n2,0) coordinate(A1)
+
+		(A) ++(0,-\n7) coordinate(K-1)
+		(A1) ++(0,-\n7) coordinate(K1)
+		(A) rectangle (K1)
 
 	\foreach \XS in {-1,1} {[xscale=\XS]
 		(B) ++(0.5 * \n2, \n3) circle(\n3)
+
+		(C) -- ++(0.5 * \n2,0)
+		let \n9={\n4 - \n5} in ++(0,\n9) -- ++(0,-2 * \n9)
+		++(0,-\n5 - \n6) coordinate(x)
+
+		(K\XS) ++(\n3,\n3) circle(\n3)
+		(K\XS) ++(-\n3,-\n3) circle(\n3)
+
+		\foreach \R in {0,1,2,3} {[rotate=90 * \R]
+			(x) -- ++(\n6,0)
+			let \n8={0.65 * \n5} in
+				++(0, \n8) -- ++(0, -2 * \n8)
+		}
 	}
 
+	(C) -- ++(0,-1.5) ++(0,-\n3) circle(\n3)
 
+	(A) ++(0,\n1) -- ++(\n0,-\n1)
+	(A) -- ++(-\n0,0)
+	(B) ++(-\n0,0) -- ++(\n0,\n1) -- ++(\n0,-\n1)
+	(A1) ++(-\n0,0) -- ++(\n0,\n1) -- ++(\n0,-\n1) -- (A1)
+
+	(A1) ++(0,-0.5 * \n7) coordinate(D)
+
+	\foreach \YS in {-2, -1, 1, 2} {
+		(D) ++(0, \YS * 0.35) coordinate(D\YS)
+	}
+	;
+
+\path[name path=B]
+	(D2) arc[start angle=-90, end angle=60, radius=\radj]
+	(D2) ++(0,\radj) coordinate(M2)
+	(D-2) arc[start angle=90, end angle=-60, radius=\radj]
+	(D-2) ++(0,-\radj) coordinate(M-2)
+	;
+
+\draw[name intersections={of=A and B}]
+	(intersection-1) coordinate(I2)
+	(intersection-2) coordinate(I-2)
+
+	\foreach \X/\Y in {-1/-2, 1/2} {
+		let \p0=(M\Y), \p1=(I\Y), \n9={atan((\y1-\y0)/(\x1-\x0))} in
+		(D\Y) arc[start angle={\X * -90}, end angle=\n9, radius=\radj]
+	}
+	;
+
+\path[name path=C] (D) -- ++(2.6,0);
+
+\draw[name intersections={of=A and C}]
+	(intersection-1) coordinate(R)
+	let \n9={0.65} in
+		(R) ++(-\n9,\n9)
+		arc[start angle=90, end angle=-90, radius=\n9]
+		-- cycle
+		(R) ++(-\n9,0) -- (D)
+	;
+
+
+\draw[name path=D]
+	(D) ++(1.2,0) ++(\radk,0) coordinate(z)
+	let \n9={140} in
+		(z) ++(\n9:\radk)
+		arc[start angle=\n9, end angle={360 - \n9}, radius=\radk]
+	;
+
+\path[name path=E]
+	(D-1) -- ++(2,0)
+	(D1) -- ++(2,0)
+	;
+
+\draw[name intersections={of=D and E}]
+	(D-1) -- (intersection-1)
+	(D1) -- (intersection-2)
 	;
