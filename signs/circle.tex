@@ -11,7 +11,14 @@
 	(0,0) circle(\n0) circle(\n1)
 	;
 
-\draw[blue, rotate=22] (4.95,0) circle(2pt);
+\draw[rotate=22]
+	(4.95,0)
+	-- ++(85:0.7)
+	-- ++(-20:0.4) coordinate(a)
+	-- ++(70:0.4)
+	arc[start angle=70, end angle=-5, radius=0.85]
+	(a) -- ++(70 + 45:0.4)
+	;
 
 \draw[rotate=43]
 	(4.9,0)
