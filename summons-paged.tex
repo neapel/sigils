@@ -1,8 +1,9 @@
 \documentclass[a5paper]{article}
-\usepackage[a5paper,margin=0mm,paper width=110mm,paper height=110mm]{geometry}
+\usepackage[a5paper,margin=0mm,paper width=100mm,paper height=100mm]{geometry}
 \usepackage{graphicx,stringstrings,tikz,pgf}
 \usetikzlibrary{intersections,calc}
 
+\setlength{\parindent}{0pt}
 \newcommand{\bg}[2]{%
 	\path[path picture={
 		\draw (path picture bounding box.center) ++(#1,#2) node{
@@ -15,7 +16,7 @@
 	\def\defname{#2}
 	\caselower[q]{#2}
 	\edef\filename{signs/\thestring.png}
-	\newpage\begin{tikzpicture}
+	\begin{tikzpicture}
 		\tikzset{every path/.style={ultra thick,red,line cap=round, line join=round}}
 		\InputIfFileExists{signs/\thestring.tex}{}{\bg{0}{0}}
 		\draw[help lines](-5,-5) grid (5,5);
@@ -117,10 +118,10 @@
 	\sign{Zuriel}{The Stone Master}
 	\sign{Zepar}{Deforms the Unborn}
 \end{verbatim}
-	\sign[]{common1}{}
-	\sign[]{common2}{}
-	\sign[]{common3}{}
-	\sign[]{common4}{}
+	%\sign[]{common1}{}
+	%\sign[]{common2}{}
+	%\sign[]{common3}{}
+	%\sign[]{common4}{}
 	%\sign[]{unholy}{A common Sigil needed to summon an Unholy Power}
 	%\sign[]{kaliyuga}{An Ancient Sorcery}
 	%\sign[]{myriad}{To summon a Myriad which is 20,736 of Hell's Minions}
