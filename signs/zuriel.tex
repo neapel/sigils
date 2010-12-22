@@ -1,0 +1,21 @@
+\bg{0}{-0.25}
+
+\draw
+	let \n0={0.90} in
+		(0,0) -- (-\n0,0)
+		let \n1={1} in
+			++(-\n1,0) coordinate(c) circle(\n1)
+			let \n2={45} in
+				($(c) + (\n2:\n1)$) -- ($(c) + (-90:\n1)$) -- ($(c) + (180 - \n2:\n1)$)
+
+		let \n2={1.1}, \n3={0.75} in
+		(0,0) -- (0,-2 * \n3)
+		arc[start angle=0, end angle=-90, radius=\n2]
+
+		(0,0) -- (0,2 * \n0)
+		arc[start angle=180, end angle=0, radius=\n0]
+		-- ++(0,-2 * \n0 - 2 * \n3) coordinate(k) -- ++(0,-1.75)
+		(k) arc[start angle=180, end angle=270, radius=\n2]
+
+		(0,0) -- (3 * \n0,0)
+	;
