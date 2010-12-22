@@ -1,5 +1,5 @@
 \documentclass[a5paper]{article}
-\usepackage[a5paper,margin=0mm,paper width=100mm,paper height=100mm]{geometry}
+\usepackage[a5paper,margin=0mm,paper width=150mm,paper height=150mm]{geometry}
 \usepackage{graphicx,stringstrings,tikz,pgf}
 \usetikzlibrary{intersections,calc}
 
@@ -9,7 +9,7 @@
 		\draw (path picture bounding box.center) ++(#1,#2) node{
 			\includegraphics[scale=3]{\filename}
 		};
-	}] (-5,-5) rectangle (5,5);
+	}] (-7,-7) rectangle (7,7);
 }
 
 \newcommand{\sign}[3][\defname]{
@@ -19,7 +19,7 @@
 	\begin{tikzpicture}
 		\tikzset{every path/.style={ultra thick,red,line cap=round, line join=round}}
 		\InputIfFileExists{signs/\thestring.tex}{}{\bg{0}{0}}
-		\draw[help lines](-5,-5) grid (5,5);
+		\draw[help lines](-7,-7) grid (7,7);
 		\fill[blue](0,0) circle(2pt);
 		\draw[black] (0,3)node[font=\Huge\tt,opacity=0.2]{\thestring};
 	\end{tikzpicture}
@@ -97,7 +97,7 @@
 	%\sign{Ronove}{The Knowledge Staff}
 	%\sign{Rauym}{Demon of Filth}
 	%\sign{Sabnac}{Demon of Poisons}
-	\sign{Sakath}{Second Lord under Veguaniel}
+	%\sign{Sakath}{Second Lord under Veguaniel}
 	%\sign{Saleos}{of Hell's Electorate "Panderer"}
 	%\sign{Schetalim}{The Polygod}
 	%\sign{Stygal}{Brings Death}
