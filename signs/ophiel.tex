@@ -1,0 +1,14 @@
+\bg{-0.2}{0.5}
+
+\draw
+	(-1,2) coordinate(z) circle(1)
+	\foreach \R in {0,...,5} {(z) ++(\R * 360/6.0:1) coordinate(p\R)}
+	(p0) -- (p3) -- (p1) -- (p5) -- (p2) -- (p4) -- cycle
+
+	let \n0={1.8} in
+	(z) ++(0,-1) coordinate(o) -- ++(\n0,0)
+	(o) -- ++(0,-2) coordinate(y) -- ++(-\n0,0) coordinate(x) -- cycle
+	(x) -- ++(0,1.5)
+	(y) -- ++(2.35,0)
+	(y) arc[start angle=-127.5, end angle=-85, radius=5]
+	;
