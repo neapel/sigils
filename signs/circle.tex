@@ -12,8 +12,17 @@
 	;
 
 \draw[blue, rotate=22] (4.95,0) circle(2pt);
+
 \draw[blue, rotate=43] (4.9,0) circle(2pt);
-\draw[blue, rotate=60] (4.9,0) circle(2pt);
+
+\draw[rotate=60]
+	(4.9,0)
+	-- ++(90:0.65)
+	-- ++(-45:0.4)
+	-- ++(90:0.35)
+	arc[start angle=-160, end angle=30, radius=0.225]
+	arc[start angle=-160, end angle=30, radius=0.225]
+	;
 
 \draw[rotate=92]
 	(4.9,0)
