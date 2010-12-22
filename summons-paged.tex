@@ -15,16 +15,13 @@
 	\def\defname{#2}
 	\caselower[q]{#2}
 	\edef\filename{signs/\thestring.png}
-	\begin{tikzpicture}
+	\newpage\begin{tikzpicture}
 		\tikzset{every path/.style={ultra thick,red,line cap=round, line join=round}}
 		\InputIfFileExists{signs/\thestring.tex}{}{\bg{0}{0}}
 		\draw[help lines](-5,-5) grid (5,5);
 		\fill[blue](0,0) circle(2pt);
 		\draw[black] (0,3)node[font=\Huge\tt,opacity=0.2]{\thestring};
 	\end{tikzpicture}
-	%\vfill
-	%#3
-	\newpage
 }
 
 \begin{document}

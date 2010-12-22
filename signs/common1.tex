@@ -1,0 +1,9 @@
+%\bg{0}{-0.35}
+
+\draw
+	let \n0={4} in
+	\foreach \R in {0,...,4} {
+		(-90 + \R * 360/5.0:\n0) coordinate(c\R)
+	}
+	(c0) -- (c2) -- (c4) -- (c1) -- (c3) -- cycle
+	;
