@@ -1,0 +1,14 @@
+%\bg{-0.035}{0}
+
+\draw
+	(-3.2,0)
+	arc[start angle=180, end angle=0, radius=0.5]
+	arc[start angle=180, end angle=0, radius=0.5]
+	-- ++(3.1,0)
+	let \n0={0.675} in ++(\n0,0) circle(\n0)
+	let \n1={0.725} in
+		let \n2={1.45} in (\n1,-\n2) -- (\n1,\n2)
+		let \n3={2.225}, \n4={0.5} in
+			(-\n1,-\n3) -- (-\n1,\n3 - \n4)
+				++(\n4,0) circle(\n4)
+	;
