@@ -1,0 +1,12 @@
+\bg{-0.375}{-0.525}
+
+\draw
+	let \n0={0.35}, \n1={3.75} in
+	(0,0) circle(\n0)
+	++(-\n0,0) -- (-\n1,0)
+	arc[start angle=180, end angle=322, radius=\n1]
+	-- ++(-1.5,0) |- ++(-1.5,3.75)
+
+	(2.2,-1.55) circle(\n0) ++(-\n0,0) -- ++(-1.5,0)
+	arc[start angle=270, end angle=135, radius=2.5]
+	;
