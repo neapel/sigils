@@ -1,0 +1,15 @@
+\bg{0.075}{-0.325}
+
+\draw
+	let \n0={1.95}, \n1={32}, \n2={1.475} in
+		(\n1:0.05)
+		arc[start angle=58, end angle=-142, radius=2.000]
+		(\n1:1.5)
+		arc[start angle=48, end angle=-175, radius=2.025]
+		(\n1:2.75)
+		arc[start angle=38, end angle=-222, radius=2.025]
+
+	(0.6,1.4) -- ++(0,1.5) coordinate(p)
+	let \n0={60}, \n1={1} in
+		(p) ++(\n0:-\n1) -- (p) -- ++(-\n0:\n1)
+	;
