@@ -1,0 +1,30 @@
+\bg{0.025}{-0.025}
+
+\draw
+	let \n0={0.25}, \n1={0.75}, \n2={0.3} in
+	\foreach \XS in {-1,1} {[xscale=\XS]
+		(0,0) -- (2.675,0) ++(\n0,0) circle(\n0)
+		(1.925,0) coordinate(o)
+		(o) -- ++(0,-1.1) ++(0,-\n0) circle(\n0)
+	
+		\foreach \XZ in {-1,1} {[xscale=\XZ]
+			(o) ++(-0.4,0) coordinate(z)
+			(z) arc[start angle=0, end angle=22.5, radius=4]
+			(z) arc[start angle=0, end angle=-25, radius=3.0]
+		}
+
+		(0.7,0) coordinate(k)
+		(k) -- ++(0,\n1) coordinate(t)
+			(t) ++(\n2,\n2) -- (t) -- ++(-\n2,\n2) -- cycle
+
+		(k) -- ++(0,-\n1) ++(0,-\n0) circle(\n0)
+	}
+	
+	(0,0) -- ++(0,-\n1) ++(0,-\n0) circle(\n0)
+	(0,0) -- ++(0,\n1) coordinate(m) -- ++(0,\n2)
+		++(-\n2,-\n2) -- ++(2 * \n2,0)
+
+	let \n3={0.2} in
+		(1.125,0) ++(0,-\n3) circle(\n3)
+		++(0,2 * \n3) circle(\n3)
+	;
