@@ -1,52 +1,57 @@
 \documentclass{article}%\documentclass[a0,portrait]{a0poster}
-\usepackage[a0paper,margin=5mm,paper height=1700mm]{geometry}
+\usepackage[a0paper,margin=5mm,paper height=1200mm,paper width=700mm]{geometry}
 
 \usepackage{stringstrings}
 \usepackage{tikz,pgf}
 \usetikzlibrary{intersections,calc}
 
+%% FONTS
 \setlength{\baselineskip}{2ex}
-\font\signNameFont="Interstate" at 30pt
-\font\signDescFont="Interstate" at 20pt
-\font\mainTitleFont="Interstate" at 90pt
-\font\secTitleFont="Interstate" at 40pt
+\font\signNameFont="Interstate" at 27pt
+\font\signDescFont="Interstate" at 14pt
+\font\mainTitleFont="Interstate" at 72pt
+\font\secTitleFont="Interstate" at 60pt
+\font\bottomTitleFont="Interstate" at 75pt
 
-\newcommand{\signName}[1]{\uppercase{\signNameFont \protect{#1}}}
+\newcommand{\signName}[1]{\uppercase{\signNameFont #1}}
 \newcommand{\signDesc}[1]{\uppercase{\signDescFont #1}}
 \newcommand{\mainTitle}[1]{\uppercase{\mainTitleFont #1}}
 \newcommand{\secTitle}[1]{\uppercase{\secTitleFont #1}}
+\newcommand{\bottomTitle}[1]{\uppercase{\bottomTitleFont #1}}
 
+%% POSITIONING
+\newcommand{\baselineStart}{-123.5mm}
+\newcommand{\baselineSkip}{-89.2mm}
+\newcounter{SignColumn}
 
-\newlength{\signX}
-\newlength{\signY}\setlength{\signY}{0mm}
-
+\newcommand{\firstrow}{
+	\path(0,\baselineStart) coordinate(Baseline);
+%	\draw[red, ultra thick, dashed]
+%		let \n0={290mm} in (Baseline)++(-\n0,0)--++(2 * \n0,0);
+	\foreach \X in {1,...,10} {
+		\path
+			let \n0={59.5mm} in
+			(\n0 * \X - \n0 * 5.5, 0) coordinate(Column\X);
+%		\draw[red, ultra thick, dashed]
+%			(Column\X) ++(0,-10mm) -- ++(0,-1000mm);
+	}
+}
 \newcommand{\newrow}{
-	\addtolength{\signY}{-1mm}
-	\setlength{\signX}{-4.5mm}
-	\path(0,\signY * 75 * 1.5) coordinate(CsignY);
+	\path(Baseline) ++(0,\baselineSkip)coordinate(Baseline);
+%	\draw[red, ultra thick, dashed]
+%		let \n0={290mm} in (Baseline)++(-\n0,0)--++(2 * \n0,0);
+	\setcounter{SignColumn}{0}
 }
 
-\newcommand{\sign}[3][\defname]{
-	\def\defname{\signName{#2}}
+\newcommand{\xsign}[2][0mm]{
+	\stepcounter{SignColumn}
 	\caselower[q]{#2}\edef\texname{signs/\thestring.tex}
+	\edef\columnName{Column\theSignColumn}
 	%
 	\draw
-		(\signX * 75, 0) coordinate(CsignX)
-		(CsignX |- CsignY) coordinate(x)
-
-		(x)node[
-			anchor=south,
-			text width=60mm,
-			align=center
-		]{\signName{#1}}
-
-		(x)++(0,-1)node[
-			anchor=base,
-			text width=60mm,
-			align=center
-		]{\signDesc{#3}}
-
-		(x)++(0,4.5)node{\begin{tikzpicture}[
+		(\columnName) coordinate(Column)
+		(Column |- Baseline) coordinate(SignHere)
+		(SignHere)++(0,#1)node{\begin{tikzpicture}[
 			scale=0.75,
 			ultra thick,
 			line cap=round,
@@ -55,15 +60,38 @@
 			\InputIfFileExists{\texname}{}{}
 		\end{tikzpicture}}
 		;
-	
-	\addtolength{\signX}{1mm}
 }
+
+\newcommand{\sign}[3][\defname]{
+	\def\defname{\signName{#2}}
+	\xsign[40mm]{#2}
+	%
+	\draw
+		(SignHere)node[
+			anchor=south,
+			text width=55mm,
+			align=center
+		]{\signName{#1}}
+
+		(SignHere)++(0,-0mm)node[
+			anchor=north,
+			text width=55mm,
+			align=center
+		]{\signDesc{#3}}
+		;
+}
+
+
 
 
 \begin{document}
 \centering
 \begin{tikzpicture}
-	\newrow
+	\draw(0,0)node[anchor=north]{
+%		\includegraphics[scale=2.25]{summons-cropped.png}
+	};
+
+	\firstrow
 	\sign{Abyss}{Lord of Chaos}
 	\sign{Aciel}{The God Burner}
 	\sign{Adatiel}{Walks the Earth}
@@ -155,25 +183,25 @@
 	\sign{Zuriel}{The Stone Master}
 	\sign{Zepar}{Deforms the Unborn}
 
-	\draw(0,4)node[align=center]{%
+	\draw(0,-8mm)node[anchor=north,align=center]{%
 		\mainTitle{Here follows a List of several Demons}\\%
-		\mainTitle{and their Sigils of Summoning}};
+		\mainTitle{and their Sigils of Summoning:}};
 
-	\draw(CsignY)++(0,-4)node{%
+	\draw(Baseline)++(0,-18mm)node[anchor=north]{%
 		\secTitle{Other Sigils of necissity include:}};
 	\newrow
-	\sign[]{common1}{}
-	\sign[]{common2}{}
-	\sign[]{common3}{}
-	\sign[]{common4}{}
-	\sign[]{unholy}{A common Sigil needed to summon an Unholy Power}
-	\sign[]{kaliyuga}{An Ancient Sorcery}
-	\sign[]{myriad}{To summon a Myriad which is 20,736 of Hell's Minions}
-	\sign[]{union}{To request a fiendish Union with Incubi or Succubi}
-	\sign[]{circle}{The Great Circle of Summoning}
+	\xsign{common1}{}
+	\xsign{common2}{}
+	\xsign{common3}{}
+	\xsign{common4}{}
+	\xsign{unholy}{A common Sigil needed to summon an Unholy Power}
+	\xsign{kaliyuga}{An Ancient Sorcery}
+	\xsign{myriad}{To summon a Myriad which is 20,736 of Hell's Minions}
+	\xsign{union}{To request a fiendish Union with Incubi or Succubi}
+	\xsign{circle}{The Great Circle of Summoning}
 
-	\draw(CsignY)++(0,-4)node[align=center]{%
-		\mainTitle{Warning: This knowledge to be used only}\\%
-		\mainTitle{in times of extreme emergency}};
+	\draw(Baseline)++(0,-80mm)node[align=center]{%
+		\bottomTitle{Warning: This knowledge to be used only}\\%
+		\bottomTitle{in times of extreme emergency}};
 \end{tikzpicture}
 \end{document}

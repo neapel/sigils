@@ -1,4 +1,5 @@
 
+#all : summons.pdf
 summons-paged.pdf : summons-paged.tex signs/*.tex
 
 all : fonttest.pdf
