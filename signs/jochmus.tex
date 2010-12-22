@@ -1,0 +1,27 @@
+%\bg{-0.3}{-0.225}
+
+\draw
+	(-3,-2.45) coordinate(a)
+	-- (-3,2) coordinate(b)
+	-- (1.45,2) coordinate(k)
+	-- ++(1,0) coordinate(c)
+	\foreach \N/\R in {a/0, b/90, c/180}
+		\foreach \X in {0,...,5} {
+			(\N) -- ++(\R + \X * 60 - 15:0.5)
+		}
+	;
+
+\draw[name path=s]
+	let \n0={0.55} in
+		(a -| k) coordinate(x) circle(\n0)
+		\foreach \R in {0,...,5} {
+			let \n1={15 + \R * 60} in
+			(x) ++(\n1:\n0) -- ++(\n1 - 90:0.9)
+		}
+	;
+
+\path[name path=v] (k) -- ++(0,-3.7);
+
+\draw[name intersections={of=s and v}]
+	(intersection-1) -- (k) -- ++(0,1)
+	;
