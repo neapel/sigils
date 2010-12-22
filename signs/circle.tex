@@ -116,7 +116,15 @@
 	-- ++(143:1.8)
 	;
 
-\draw[blue, rotate=271] (4.9,0) circle(2pt);
+\draw[rotate=271]
+	let \n0={-45}, \n1={7} in
+	(4.95,0)
+	-- ++(95:0.75)
+	-- ++(\n0:1.125)
+	arc[start angle={\n0 - 90}, end angle=\n1, radius=0.2]
+	-- ++(\n1 + 90:0.8)
+	;
+
 \draw[blue, rotate=291] (4.9,0) circle(2pt);
 \draw[blue, rotate=299] (5.2,0) circle(2pt);
 
