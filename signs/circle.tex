@@ -125,8 +125,22 @@
 	-- ++(\n1 + 90:0.8)
 	;
 
-\draw[blue, rotate=291] (4.9,0) circle(2pt);
-\draw[blue, rotate=299] (5.2,0) circle(2pt);
+\draw[rotate=291]
+	(4.9,0)
+	arc[start angle=-215, end angle=20, radius=0.35]
+	-- ++(-50:0.625)
+	-- ++(85:0.55)
+	;
+
+\draw[rotate=299]
+	(5.25,0)
+	arc[start angle=-15, end angle=88, radius=0.45]
+	arc[start angle=190, end angle=300, radius=0.45]
+	arc[start angle=300, end angle=430, radius=0.2]
+	let \n0={-30}, \n1={0.25} in
+	-- ++(\n0:0.70)
+	++(\n0:-\n1) -- ++(\n0 - 90:\n1)
+	;
 
 \draw[rotate=320]
 	(4.9,0)
