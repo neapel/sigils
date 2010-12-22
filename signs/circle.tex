@@ -83,7 +83,15 @@
 		(a) -- ++(\n0+180:0.5 * \n1)
 	;
 
-\draw[blue, rotate=185] (5.1,0) circle(2pt);
+\draw[rotate=185]
+	let \n0={-204} in
+	(5.1,0)
+	arc[start angle=-130, end angle=\n0, radius=0.5]
+	arc[start angle={\n0 + 180}, end angle=50, radius=0.5]
+	-- ++(50 - 90:0.8)
+	-- ++(83:1)
+	-- ++(-50:0.6)
+	;
 
 \draw[rotate=227]
 	(5.2,0)
@@ -94,7 +102,12 @@
 		(a) -- ++(\n1 + 180:\n0)
 	;
 
-\draw[blue, rotate=238] (4.8,0) circle(2pt);
+\draw[rotate=238]
+	(4.8,0)
+	arc[start angle=90, end angle=0, radius=0.2]
+	arc[start angle=-100, end angle=-5, radius=0.3]
+	arc[start angle=150, end angle=410, radius=0.44]
+	;
 
 \draw[rotate=248]
 	(5.0,0)
