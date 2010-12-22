@@ -1,0 +1,23 @@
+\bg{0.05}{0}
+
+\newcommand{\radi}{3.45}
+
+\draw[name path=A] (0,0) circle(\radi);
+
+\draw
+	(151:\radi) coordinate(lb)
+	(137.5:\radi) coordinate(lt)
+
+	let \p0=(lb), \p1=(lt), \n0={\x1 - \x0}, \n1={\y1 - \y0},
+	\n2={1.725}, \n3={0.22} in
+		(lt) -- ++(\n0,-\n1)
+		(lb) -- ++(\n0,0) coordinate(A) circle(2pt)
+		-- ++(\n2,0) coordinate(B) circle(2pt)
+		++(0,-0.8) coordinate(C) circle(2pt)
+
+	\foreach \XS in {-1,1} {[xscale=\XS]
+		(B) ++(0.5 * \n2, \n3) circle(\n3)
+	}
+
+
+	;
