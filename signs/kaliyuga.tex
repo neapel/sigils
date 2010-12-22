@@ -1,0 +1,9 @@
+%\bg{0.25}{0.125}
+
+\draw
+	let \n0={3.65} in
+	\foreach \R in {0,...,4} {
+		(5 + \R * 360/5.0:\n0) coordinate(c\R)
+	}
+	(c0) -- (c2) -- (c4) -- (c1) -- (c3) -- cycle
+	;

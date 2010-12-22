@@ -1,0 +1,17 @@
+%\bg{-0.025}{-0.425}
+
+\draw
+	let \n0={2.1} in
+		(-\n0,0) -- (\n0,0)
+	let \n0={1.2+0.075/2} in
+		(0,\n0) coordinate(a) -- (0,-\n0) coordinate(b)
+	let \n0={1.65} in
+		(a) ++(-\n0,0) coordinate(t0)
+		(a) ++(\n0,0) coordinate(t1)
+		(a) ++(0,2) coordinate(t2)
+		(t0) -- (t1) -- (t2) -- cycle
+	let \n0={1.225}, \n1={1} in
+		(b) ++(0,-\n0) coordinate(c) circle(\n0)
+		(c) ++(-45:\n0) -- ++(-45:\n1)
+		(c) ++(-135:\n0) -- ++(-135:\n1)
+	;
