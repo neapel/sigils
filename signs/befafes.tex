@@ -1,0 +1,19 @@
+%\bg{-0.02}{-0.425}
+
+\draw
+	(0,-2) coordinate(a) circle(1)
+	(a) to ++(0,1.7) coordinate(b)
+	to ++(0,1.525) coordinate(c)
+	to ++(0,0.95) to ++(-1.55,0)
+
+	let \n0={3}, \n1={2.4}, \n2={1.9} in
+	(a) ++(-\n0,0) coordinate(k1) to ++(2 * \n0,0) coordinate(k4)
+	(b) ++(-\n1,0) coordinate(k2) to ++(2 * \n1,0) coordinate(k5)
+	(c) ++(-\n2,0) coordinate(k3) to ++(2 * \n2,0)
+	;
+
+\foreach \sh in {k1,k2,k3,k4,k5}
+	\draw
+		let \n0={0.4} in
+		(\sh) ++(0,-\n0) to ++(0, 2 * \n0)
+		;

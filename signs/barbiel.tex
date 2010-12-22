@@ -1,0 +1,13 @@
+%\bg{0}{2 -0.25}
+
+\draw
+	let \n0={0.5 * 1.5} in
+	(0,\n0) circle(\n0)
+	(-\n0, 3 * \n0) arc[start angle=180, end angle=360, radius=\n0]
+	(-3,0) coordinate(a) to (3,0) coordinate(b)
+	(0,4) coordinate(c) to (0,2.5)
+	let \n0={0.85}, \n1={0.5} in
+	(a) ++(\n0,\n1) to (a) to ++(\n0,-\n1)
+	(b) ++(-\n0,\n1) to (b) to ++(-\n0,-\n1)
+	(c) ++(-\n1,-\n0) to (c) to ++(\n1,-\n0)
+	;

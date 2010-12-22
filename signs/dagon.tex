@@ -1,0 +1,10 @@
+%\bg{0}{0.275}
+
+\draw
+	(0,0) circle(0.6)
+	(2,1) arc[start angle=360, end angle=180, x radius=2, y radius=1.75]
+	(2,-1) arc[start angle=0, end angle=180, x radius=2, y radius=1.75]
+	(0,1) coordinate(x)
+	let \n0={0.6} in
+	(x) ++(-\n0,\n0) -- (x) -- ++(\n0,\n0)
+	;

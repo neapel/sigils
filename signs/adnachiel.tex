@@ -1,0 +1,14 @@
+%\bg{0.05}{-0.05}
+
+\begin{scope}[rotate=45]
+	%\draw[very thin,gray](-4,-2) grid[step=0.5](4,2);
+	\draw
+		(0,-0.75) to (0,0.75)
+		(-3.2,0) to (3.2,0) coordinate(tip)
+		(tip) to ++(-1.1,-1.1)
+		(tip) to ++(-1.1,1.1)
+		(-1.675,0) coordinate(arc)
+		(arc) arc[radius=0.65, start angle=-90, end angle=90]
+		(arc) arc[radius=0.65, start angle=90, end angle=270]
+		;
+\end{scope}

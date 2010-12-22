@@ -1,0 +1,126 @@
+\documentclass[a5paper]{article}
+\usepackage{graphicx,stringstrings,tikz,pgf}
+\usetikzlibrary{intersections,calc}
+
+\usepackage{fullpage}
+\pagestyle{plain}
+
+\newcommand{\bg}[2]{%
+	\path[path picture={
+		\draw (path picture bounding box.center) ++(#1,#2) node{
+			\includegraphics[scale=3]{\filename}
+		};
+	}] (-5,-5) rectangle (5,5);
+}
+
+\newcommand{\sign}[3][\defname]{
+	\def\defname{#2}
+	\textsc{#1}
+
+	\caselower[q]{#2}
+	\edef\filename{signs/\thestring.png}
+	\begin{tikzpicture}
+		\tikzset{every path/.style={ultra thick,red,line cap=round, line join=round}}
+		\InputIfFileExists{signs/\thestring.tex}{}{\bg{0}{0}}
+		\draw[help lines](-5,-5) grid (5,5);
+		\fill[blue](0,0) circle(2pt);
+	\end{tikzpicture}
+	%\vfill
+	%#3
+	\newpage
+}
+
+\begin{document}
+	%\sign{Abyss}{Lord of Chaos}
+	%\sign{Aciel}{The God Burner}
+	%\sign{Adatiel}{Walks the Earth}
+	%\sign{Adnachiel}{The Hunter Demon}
+	%\sign{Agiel}{Lord of Calamity}
+	%\sign{Ambriel}{The Changer}
+	%\sign{Amnixiel}{Demon of the Lines}
+	%\sign{Anael}{Demon of Lust}
+	%\sign{Apadiel}{of Hell's Electorate "Musician"}
+	%\sign{Aratron}{Demon of Sorrow}
+	%\sign{Ariel}{of Hell's Electorate "Historian"}
+	%\sign{Avachiel}{The Inquisitor}
+	%\sign{Azerviel}{Demon of Defeat}
+	%\sign{Babalel}{Second Demon of War}
+	%\sign{Barbiel}{Lord of Ancients}
+	\sign{Barchiel}{of Hell's Electorate "Mechanic"}
+	%\sign{Befafes}{First Demon of War}
+	%\sign{Blisdon}{The Quick One}
+	%\sign{Bornogo}{Lord of Power}
+	\sign{Brorges}{Archdemon of Woe}
+	%\sign{Butmono}{Demon of Greed}
+	%\sign{Camael}{The Destroyer}
+	\sign{Cassiel}{Lord of all Conspirators}
+	%\sign{Cassriel}{of Hell's Electorate "Poet"}
+	%\sign{Chenor}{The Wish Granter}
+	%\sign{Dagon}{The Great Fish}
+	%\sign{Decarab}{The Beautiful}
+	%\sign{Digdin}{The Disordered}
+	%\sign{Elim}{Lord of Attrition}
+	%\sign{Ekusha}{The God Eyed}
+	\sign{Eoligos}{Visible and Invisible}
+	\sign{Ferug}{The Rusting One}
+	\sign{Focalor}{The Demon that Drowns Men}
+	\sign{Forcas}{Teach Logics and the Secrets of Plants and Gems}
+	\sign{Furtur}{Demon of Storms}
+	%\sign{Gamigin}{The Horse Lord}
+	%\sign{Garn}{The King Tempter}
+	%\sign{Grachiel}{Archdemon of the Dying Times}
+	\sign{Hagith}{Demon of Jealousy}
+	\sign{Hagonel}{Lord under Grachiel}
+	\sign{Hamaliel}{Lord of Obsessions}
+	\sign{Hanael}{The Adversarial}
+\begin{verbatim}
+	\sign[Hasmodel \ Hasmodai]{hasmodel}{The Twin Bulls}
+	\sign{Hismael}{The Acquirer}
+	\sign{Ipos}{Knows Things to Come and Past}
+	\sign{Jochmus}{The First Saviour of Hell}
+	\sign{Lahad}{The Devil Voice}
+	\sign{Lesifuges}{Brings Riches and Shortens Life}
+	\sign{Lucifer}{The Morning Star}
+	\sign{Malchidael}{Demon of Impatience}
+	\sign{Malphas}{The Tower Builder}
+	\sign{Marbuel}{of Hell's Electorate "Architect"}
+	\sign{Marchosias}{Gives Aid in Battles/A Demon Bound}
+	\sign{Meeod}{The Life Restorer}
+	\sign{Mephistoph}{Lord of the Host}
+	\sign{Miczariel}{The Warrioress}
+	\sign{Muriel}{Great Demon of Lies}
+	\sign{Naberius}{Lord of Cunning}
+	\sign{Nestorats}{The Fire Monster}
+	\sign{Nysrog}{Lord of the House of Princes}
+	\sign{Och}{The Sun Speaker}
+	\sign{Ophiel}{Lord Messenger and God Teacher}
+	\sign{Orias}{of Hell's Electorate "Astronomer"}
+	\sign{Ozgin}{Demon of Madness}
+	\sign{Paimon}{Master of Infernal Ceremonies}
+	\sign{Parniel}{First Lord under Veguaniel}
+	\sign{Phaleg}{Demon of Discontent}
+	\sign{Psohdon}{The Inconstant}
+	\sign{Ronove}{The Knowledge Staff}
+	\sign{Rauym}{Demon of Filth}
+	\sign{Sabnac}{Demon of Poisons}
+	\sign{Sakath}{Second Lord under Veguaniel}
+	\sign{Saleos}{of Hell's Electorate "Panderer"}
+	\sign{Schetalim}{The Polygod}
+	\sign{Stygal}{Brings Death}
+	\sign{Suluth}{The Great Robber}
+	\sign{Surgat}{Who Opens all Locks}
+	\sign{Sytri}{Lord of Luxury}
+	\sign{Tarthanac}{Lord of Goldiron}
+	\sign{Tephros}{The Ashmaker and Fever Curer}
+	\sign{Uphir}{of Hell's Electorate "Physician"}
+	\sign{Vabam}{Who Tells True of Hidden Treasures}
+	\sign{Valac}{Lord of Snakes}
+	\sign{Veguaniel}{Archdemon of Fortune}
+	\sign{Vepar}{The Water Master}
+	\sign{Vetis}{The Life Promiser}
+	\sign{Zablah}{of Hell's Electorate "Lawyer"}
+	\sign{Zagam}{Lord of Forgery}
+	\sign{Zuriel}{The Stone Master}
+	\sign{Zepar}{Deforms the Unborn}
+\end{verbatim}
+\end{document}

@@ -1,0 +1,20 @@
+%\bg{0}{0}
+
+\draw
+	(0,0) circle(3.3)
+	(1.85,0) coordinate(a)
+	let \n0={1}, \n1={0.25} in
+	(a) ++(-\n0,0) to ++(2 * \n0,0)
+	(a) ++(0,\n0) to ++(0,-2 * \n0 + \n1) coordinate(b)
+	(b) ++(\n1,-\n1) to ++(-2 * \n1, 0) to (b) -- cycle
+	;
+
+\foreach \A in {0,...,3} {
+	\begin{scope}[rotate={45 + \A * 90}]
+		\draw
+			(0,0) to ++(2.3,0)
+			let \n0={0.35} in
+			++(\n0,0) circle(\n0)
+			;
+	\end{scope}
+}

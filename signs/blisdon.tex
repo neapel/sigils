@@ -1,0 +1,17 @@
+%\bg{1.15}{0}
+
+\begin{scope}[x={(1.5,0)},y={(0,3)}]
+	\draw let \n0={120} in
+		(\n0:1) arc[start angle=\n0, end angle={-\n0}, radius=1];
+\end{scope}
+
+\draw
+	(-1.5,0) to (3.75,0)
+	++(-0.5, 0) coordinate(k)
+	(k) to ++(0.5,1.4)
+	(k) to ++(0.5,-1.4)
+	let \n0={0.4} in
+	(-\n0,-1) to ++(2 * \n0,0)
+	(-\n0,1) to ++(2 * \n0,0)
+	(0,-1) to (0,1)
+	;

@@ -1,0 +1,19 @@
+%\bg{-0.25 - 0.8}{0}
+
+
+\draw
+	(0,0) to ++(-1.2,0)
+	let \n0={45}, \n1={1.25}, \n2={0.3} in
+		arc[start angle=0, end angle=\n0, radius=\n1]
+		to ++(180 + \n0:\n1) coordinate(k)
+		++(270 + \n0:\n2) circle(\n2)
+
+	let \n0={1.65}, \n1={1.65} in
+		(k) ++(-\n0,-\n1) rectangle ++(2 * \n0, 2 * \n1)
+
+	let \n0={0.6}, \n1={1.5}, \n2={acos(\n0 / \n1)}, \n3={\n1 * sin(\n2)} in
+		(\n0,0) coordinate(c) circle(\n0)
+		(c) ++(-\n2:\n0) coordinate(x)
+		(c) ++(\n2:\n0) to ++(\n2-90:\n3) to (x)
+	;
+

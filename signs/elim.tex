@@ -1,0 +1,20 @@
+%\bg{0}{0}
+
+\newcommand{\radi}{0.825}
+
+\draw
+	let \n0={2.475} in
+	(-\n0,\n0) coordinate(r0)
+	(\n0,\n0) coordinate(r1)
+	(\n0,-\n0) coordinate(r2)
+	(-\n0,-\n0) coordinate(r3)
+	(r0) rectangle (r2)
+	(0,0) circle(\radi)
+	;
+
+\foreach \X/\R in {r0/0, r1/90, r2/180, r3/270}
+	\foreach \A in {0,...,5}
+		\draw (\X) to ++(15 + \A * 60 +\R:0.5);
+
+\foreach \A in {0,...,5}
+	\draw (90 + 60 * \A:\radi) to ++(60 * \A:1.35);

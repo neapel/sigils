@@ -1,0 +1,15 @@
+%\bg{0.05}{0.05}
+
+\draw
+	(1,1) coordinate(z)
+	let \n0={35}, \n1={0.25} in
+	(z) arc[start angle=90, end angle=\n0, x radius=1.825, y radius=1.75]
+		++(\n0 - 90:\n1) circle(\n1)
+	let \n0={0.7} in
+	(z) -- ++(0,-2 + \n0) arc[start angle=0, end angle=-180, x radius={0.5 * 1.5}, y radius=\n0]
+		-- ++(0,1.5 - \n0) coordinate(x)
+
+	(x) ++(1.9,0) -- ++(-3.2,0)
+	let \n0={0.5} in
+		++(-\n0,0) circle(\n0)
+	;

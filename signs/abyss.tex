@@ -1,0 +1,16 @@
+%\bg{0}{1.35}
+
+\draw[name path=circ] (0,0) circle(2);
+\draw
+	(0,3.7) coordinate(c)
+	(c) to ++(-1,0)
+	(c) to ++(1,0)
+	(c) to ++(0,1)
+	(c) to ++(0,-1) coordinate(e)
+	;
+\path[name path=rec] (-0.5,0) rectangle (0.5,4);
+\draw[name intersections={of=circ and rec}]
+	(e -| intersection-2) ++(0,-0.5) coordinate(x)
+	(intersection-2) to (x)
+		arc[start angle=180,end angle=0,radius=0.5]
+	to (intersection-1);

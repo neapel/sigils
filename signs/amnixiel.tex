@@ -1,0 +1,9 @@
+%\bg{0}{-0.7}
+
+\draw
+	let \n0={38}, \n1={3.5} in
+	(\n0:\n1) coordinate(top)
+	arc[start angle={\n0}, end angle={-180 - \n0}, radius=\n1]
+	(0,0) coordinate(base)
+	(0,-\n1) to (top -| base) to ++(-60:1.5)
+	;
