@@ -1,0 +1,15 @@
+\bg{0.25}{-0.10}
+
+\draw
+	(-2,-2) coordinate(x) -- ++(3.6,0)
+	arc[start angle=-90, end angle=90, radius=1.775]
+	arc[start angle=90, end angle=270, radius=1.250]
+	arc[start angle=-90, end angle=90, radius=0.725]
+	arc[start angle=90, end angle=450, radius=0.325]
+
+	(x) arc[start angle=-30, end angle=22, radius=4]
+	-- ++(216:1.5)
+	let \n0={1.3} in ++(0,-\n0) rectangle ++(2.8,\n0)
+	let \n1={0.55} in
+		++(-\n1,0) -- ++(70:1.25) -- ++(\n1,0)
+	;
