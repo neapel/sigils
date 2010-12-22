@@ -195,4 +195,10 @@
 	arc[start angle=-65, end angle=-285, radius=0.525]
 	;
 
-\draw[blue, rotate=201] (2.9,0) circle(2pt);
+\draw[rotate=201]
+	(2.9,0)
+	.. controls ++(150:0.65) and ++(140:-0.4) ..
+	++(120:0.95)
+	-- ++(35:0.55)
+	arc[start angle=-145, end angle=-300, radius=0.5]
+	;
