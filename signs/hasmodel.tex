@@ -1,0 +1,20 @@
+%\bg{-0.5}{-0.95}
+
+\draw[rotate=-17]
+	(0,0) coordinate(z) circle(2pt)
+	let \n0={1.8}, \n1={0.95} in
+		(z) -- ++(-\n0,0) coordinate(l) -- ++(-\n1,0)
+		(z) -- ++(\n0,0) coordinate(r) -- ++(\n1,0)
+
+	let \n2={1.6}, \n3={65} in
+		(l) -- ++(0,\n2)
+		(l) -- ++(0,-\n2)
+		arc[start angle=\n3, end angle=-\n3, radius=1.65]
+		arc[start angle=-\n3, end angle=-240, radius=0.475]
+
+	let \n2={2.6} in
+		(r) -- ++(0,\n2) -- ++(-142:\n2)
+		(r) -- ++(0,-\n2)
+		arc[start angle=0, end angle=-90, radius=1.25]
+		arc[start angle=-90, end angle=-210, radius=0.6]
+	;
