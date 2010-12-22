@@ -22,12 +22,17 @@
 		(a) arc[start angle=-90, end angle=0, radius=0.725]
 		-- ++(0,0.95) coordinate(T\XS) ++(0,\n1) circle(\n1)
 		let \n4={0.85} in
-			(T\XS) -- ++(\n4,0)
+			(T\XS) -- ++(\n4,0) coordinate(C\XS)
 			arc[start angle=90, end angle=-90, radius=\n1]
 			-- ++(-\n4,0) coordinate(B\XS)
 	}
 
 	(T-1) -- (T1)
 	(B-1) -- (B1)
+
+	(C-1) arc[start angle=90, delta angle=-180, radius=\n1]
+
+	(C1) -- ++(0.95,0)
+	arc[start angle=-90, end angle=180, radius=0.325]
 
 	;
