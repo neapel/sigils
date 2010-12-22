@@ -1,4 +1,4 @@
-\bg{0}{0.35}
+%\bg{0}{0.35}
 
 \draw
 	let \n2={0.3} in (0,\n2) circle(\n2)
@@ -18,30 +18,12 @@
 			(a) ++(-\n2,0) circle(\n2)
 			(b) ++(\n2,0) circle(\n2)
 	\foreach \XS in {-1,1} {[xscale=\XS]
-		(1,\n1) coordinate(z\XS)
+		(1.55,\n1) coordinate(x)
+		arc[start angle=-45, end angle={125 + 5}, radius=0.5]
+		let \n0={90 + 11} in
+			++(\n0:0.6) -- ++(\n0:-5) ++(\n0:-\n2) circle(\n2)
+		(x) ++(135:0.5) ++(70:0.5)
+		arc[start angle=-10, end angle=90, radius=1.0]
 	}
 	;
 
-\foreach \XS in {-1,1} {
-	\begin{scope}[xscale=\XS]
-		\path (z\XS) coordinate(z);
-		\draw[name path=v]
-			let \n0={11.5 + 90}, \n1={0.3} in
-			(z) ++(\n0:1.35) -- (z) -- ++(\n0:-3.6)
-			++(\n0:-\n1) circle(\n1);
-		\path[name path=h] (z) -- ++(1,0);
-		\path[name path=c] (z) ++(0.2,0.35) coordinate(z) circle(0.5);
-		\draw (z) circle(1pt);
-		\draw[thin,red] {[rotate=-45] (z) ++(-2,0) -- (z) -- ++(2,0)};
-		\path[name intersections={of=c and v}]
-			(intersection-1) coordinate(A);
-		\draw[name intersections={of=c and h}]
-			(intersection-1) coordinate(B);
-		\draw
-			(A) circle(3pt)
-			(B) circle(3pt)
-			;
-		\draw[thin, blue] (A) -- (B);
-		
-	\end{scope}
-}
