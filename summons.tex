@@ -6,20 +6,17 @@
 \usetikzlibrary{intersections,calc}
 
 %% FONTS
-\setlength{\baselineskip}{2ex}
-\font\signNameFont="Interstate" at 27pt
-\font\signDescFont="Interstate" at 14pt
-\font\mainTitleFont="Interstate" at 72pt
-\font\secTitleFont="Interstate" at 60pt
-\font\bottomTitleFont="Interstate" at 75pt
-%\font\specialSignFont="Interstate" at 20pt
+\font\signNameFont="Interstate:embolden=2" at 27pt
+\font\signDescFont="Interstate:letterspace=4,embolden=5" at 14pt
+\font\mainTitleFont="Interstate:extend=1.05,letterspace=2" at 62pt
+\font\secTitleFont="Interstate:extend=1.05,letterspace=5:embolden=0.4" at 50pt %60pt
+\font\bottomTitleFont="Interstate:extend=1.05,letterspace=1" at 65pt
 
-%\newcommand{\signName}[1]{\uppercase{\signNameFont #1}}
-%\newcommand{\signDesc}[1]{\signDescFont{\uppercase{#1}}}
-%\newcommand{\mainTitle}[1]{\uppercase{\mainTitleFont #1}}
-%\newcommand{\secTitle}[1]{\uppercase{\secTitleFont #1}}
-%\newcommand{\bottomTitle}[1]{\uppercase{\bottomTitleFont #1}}
-%\newcommand{\specialSign}[1]{\uppercase{\specialSignFont #1}}
+\renewcommand{\baselinestretch}{1.0}
+
+\newcommand{\K}{\hspace{1.2ex}}
+
+\color{red}
 
 %% POSITIONING
 \newcommand{\baselineStart}{-123.5mm}
@@ -59,9 +56,11 @@
 			line cap=round,
 			line join=round
 		]
-			\InputIfFileExists{\texname}{}{%
-				\draw[dashed] (0,0) circle(3);
-			}
+			\node {\texname};
+		%	\InputIfFileExists{\texname}{}%
+		%	{%
+		%		\draw[] (0,0) circle(3);
+		%	}
 		\end{tikzpicture}}
 		;
 }
@@ -79,13 +78,11 @@
 	%
 	\draw
 		(SignHere)node(SignNameNode)[
-			anchor=base, text width=55mm,
-			align=center, font=\signNameFont
+			anchor=base, align=center, font=\signNameFont
 		]{\uppercase{#1}}
 
 		(SignNameNode.south)node[
-			anchor=north,
-			align=center, font=\signDescFont
+			anchor=north, align=center, font=\signDescFont
 		]{\uppercase{#3}}
 		;
 }
@@ -97,7 +94,7 @@
 \centering
 \begin{tikzpicture}
 	\draw(0,0)node[anchor=north]{
-%		\includegraphics[scale=2.25]{summons-cropped.png}
+		\includegraphics[scale=2.25]{summons-cropped.png}
 	};
 
 	\firstrow
@@ -143,7 +140,7 @@
 	\sign{Hagonel}{Lord under Grachiel}\newrow
 	\sign{Hamaliel}{Lord of Obsessions}
 	\sign{Hanael}{The Adversarial}
-	\sign[Hasmodel \&~Hasmodai]{hasmodel}{The Twin Bulls}
+	\sign[Hasmodel\\ \&~Hasmodai]{hasmodel}{The Twin Bulls}
 	\sign{Hismael}{The Acquirer}
 	\sign{Ipos}{Knows Things\\ to Come and Past}
 	\sign{Jochmus}{The First Saviour\\ of Hell}
@@ -192,12 +189,13 @@
 	\sign{Zuriel}{The Stone Master}
 	\sign{Zepar}{Deforms the Unborn}
 
-	\draw(0,-8mm)node[anchor=north,align=center, font=\mainTitleFont]{\uppercase{%
-		Here follows a List of several Demons\\%
-		and their Sigils of Summoning:}};
+	\draw(0,-8mm)node(T)[anchor=north,align=center, font=\mainTitleFont]{\uppercase{%
+		Here\K{}follows\K{}a\K{}List\K{}of\K{}several\K{}Demons}};
+	\draw(T.south) ++(0,-2mm) node[anchor=north,align=center, font=\mainTitleFont]{\uppercase{%
+		and\K{}their\K{}Sigils\K{}of\K{}Summoning:}};
 
-	\draw(Baseline)++(0,-18mm)node[anchor=north, font=\secTitleFont]{%
-		\uppercase{Other Sigils of necissity include:}};
+	\draw(Baseline)++(0,-17mm)node[anchor=north, font=\secTitleFont]{%
+		\uppercase{Other\K{}Sigils\K{}of\K{}necissity\K{}include:}};
 	\newrow
 	\newcommand{\TextHere}{++(0,-36mm)}
 
@@ -243,9 +241,10 @@
 	\draw(SignHere)++(0,-43mm) node[S]{\uppercase{%
 		The Great Circle of Summoning}};
 
-	\draw(Baseline)++(0,-80mm)node[align=center, font=\bottomTitleFont]{\uppercase{%
-		Warning: This knowledge to be used only\\%
-		in times of extreme emergency}}
+	\draw(Baseline)++(0,-61mm)node(B)[anchor=north, align=center, font=\bottomTitleFont]{\uppercase{%
+		Warning:\K{}This\K{}Knowledge\K{}to\K{}be\K{}used\K{}only}};
+	\draw(B.south) --++(0,-2.5mm)node[anchor=north, align=center, font=\bottomTitleFont]{\uppercase{%
+		in\K{}times\K{}of\K{}extreme\K{}emergency}};
 		
 	;
 \end{tikzpicture}
