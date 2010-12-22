@@ -1,0 +1,41 @@
+\bg{0}{0.15}
+
+\draw
+	let \n0={0.3} in
+	\foreach \XS in {-1,1} {[xscale=\XS]
+		(0,0) -- ++(0.9,0) coordinate(a)
+		-- ++(1.3,0) coordinate(b)
+		-- ++(0.9,0) ++(\n0,0) circle(\n0)
+
+		{[rotate=-4]
+			(a) -- ++(0,-2.15)
+			arc[start angle=-180, end angle=0, radius=\n0]
+			let \n1={190} in
+			arc[start angle=0, end angle=\n1, radius={0.5 * \n0}]
+			arc[start angle={\n1 - 180}, end angle=-165, radius=0.4]
+		}
+
+		\foreach \A/\B/\D in {190/148/-1, 219/172/-1, 190/213/1} {
+			(b) arc[start angle=\A, end angle=\B, radius=3.5]
+			coordinate(x) {[rotate=\B]
+				(x) arc[start angle=0, end angle={\D * 290},
+					x radius={0.95 * \n0}, y radius={0.8 * \n0}]
+			}
+		}
+
+		{[rotate=-120]
+			(b) -- ++(1.45,0)
+			++(0,-\n0) -- ++(0,2 * \n0)
+		}
+	}
+
+	(0,0) -- ++(0,-1.4) ++(0,-\n0) circle(\n0)
+
+	(0,0) -- ++(0,1.9) coordinate(c)
+	\foreach \R in {-1,0,1} {[rotate={90 * \R}]
+		(c) -- ++(0,0.9)
+		let \n1={0.4} in ++(-\n1,0) -- ++(2 * \n1,0)
+	}
+
+
+	;
