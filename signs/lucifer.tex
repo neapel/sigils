@@ -1,0 +1,16 @@
+\bg{0}{0.2}
+
+\draw
+	let \n0={1.825}, \n1={124} in
+	(0,0) -- ++(\n1:2 * \n0)
+	(0,0) ++(\n1:1.6) coordinate(a)
+
+	(0,0) -- ++(\n1:-2 * \n0)
+	-- ++(-2.2,0)
+
+	(a)
+	arc[start angle={\n1+90}, end angle=90, radius=1.35]
+	arc[start angle=90, end angle=0, x radius=1.375, y radius=1.1]
+	arc[start angle=0, end angle=-90, x radius=0.7, y radius=0.85]
+	arc[start angle=-90, end angle=-225, radius=0.45]
+	;
