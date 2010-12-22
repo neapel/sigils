@@ -1,0 +1,16 @@
+\bg{0.025}{0.1}
+
+\draw
+	(-1,-2) coordinate(z)
+	\foreach \R in {0,1,2} {[rotate=-90 * \R]
+		(z) -- ++(1.2,0)
+	}
+	(z) -- ++(0,2.95)
+	arc[start angle=180, end angle=0, radius=2.35]
+	arc[start angle=0, end angle=-160, radius=1.35]
+	arc[start angle=-160, end angle=-280, radius=0.7]
+
+	(z) ++(0,2.6)
+	-- ++(135:3.8)
+	-- ++(0.8,0)
+	;
