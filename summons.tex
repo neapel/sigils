@@ -1,10 +1,21 @@
-\documentclass[a0,portrait]{a0poster}
-\usepackage[a0paper,margin=5mm,paper height=1500mm]{geometry}
+\documentclass{article}%\documentclass[a0,portrait]{a0poster}
+\usepackage[a0paper,margin=5mm,paper height=1700mm]{geometry}
 
-\usepackage{graphicx}
-\usepackage{float,stringstrings,framed,multicol}
+\usepackage{stringstrings}
 \usepackage{tikz,pgf}
 \usetikzlibrary{intersections,calc}
+
+\setlength{\baselineskip}{2ex}
+\font\signNameFont="Interstate" at 30pt
+\font\signDescFont="Interstate" at 20pt
+\font\mainTitleFont="Interstate" at 90pt
+\font\secTitleFont="Interstate" at 40pt
+
+\newcommand{\signName}[1]{\uppercase{\signNameFont \protect{#1}}}
+\newcommand{\signDesc}[1]{\uppercase{\signDescFont #1}}
+\newcommand{\mainTitle}[1]{\uppercase{\mainTitleFont #1}}
+\newcommand{\secTitle}[1]{\uppercase{\secTitleFont #1}}
+
 
 \newlength{\signX}
 \newlength{\signY}\setlength{\signY}{0mm}
@@ -15,9 +26,8 @@
 	\path(0,\signY * 75 * 1.5) coordinate(CsignY);
 }
 
-
 \newcommand{\sign}[3][\defname]{
-	\def\defname{#2}
+	\def\defname{\signName{#2}}
 	\caselower[q]{#2}\edef\texname{signs/\thestring.tex}
 	%
 	\draw
@@ -27,14 +37,14 @@
 		(x)node[
 			anchor=south,
 			text width=60mm,
-			align=center,
-		]{\large #1}
+			align=center
+		]{\signName{#1}}
 
 		(x)++(0,-1)node[
 			anchor=base,
 			text width=60mm,
 			align=center
-		]{\small #3}
+		]{\signDesc{#3}}
 
 		(x)++(0,4.5)node{\begin{tikzpicture}[
 			scale=0.75,
@@ -53,11 +63,7 @@
 \begin{document}
 \centering
 \begin{tikzpicture}
-
-	\draw(0,4)node{\Huge Here follows a List of several Demons and their Sigils of Summoning};
-
 	\newrow
-
 	\sign{Abyss}{Lord of Chaos}
 	\sign{Aciel}{The God Burner}
 	\sign{Adatiel}{Walks the Earth}
@@ -149,9 +155,20 @@
 	\sign{Zuriel}{The Stone Master}
 	\sign{Zepar}{Deforms the Unborn}
 
-	\draw(CsignY)++(0,-4)node{\Huge Other Sigils of necissity include:};
+	\draw(0,4)node[align=center]{%
+		\mainTitle{Here follows a List of several Demons}\\%
+		\mainTitle{and their Sigils of Summoning}};
 
+	\draw(CsignY)++(0,-4)node{%
+		\secTitle{Other Sigils of necissity include:}};
 	\newrow
-	\draw(CsignY)++(0,-4)node{\Huge Warning: This knowledge to be used only in times of extreme emergency};
+	\sign[]{common1}{}
+	\sign[]{common2}{}
+	\sign[]{common3}{}
+	\sign[]{common4}{}
+
+	\draw(CsignY)++(0,-4)node[align=center]{%
+		\mainTitle{Warning: This knowledge to be used only}\\%
+		\mainTitle{in times of extreme emergency}};
 \end{tikzpicture}
 \end{document}
