@@ -157,7 +157,24 @@
 	arc[start angle={230 + 180}, delta angle=-95, radius=0.35]
 	;
 
-\draw[blue, rotate=350] (5.5,0) circle(2pt);
+\draw[rotate=350]
+	(5.55,0)
+	arc[start angle=30, end angle=-180, radius=0.2]
+	-- ++(90:0.275) coordinate(a)
+	-- ++(80:0.3) coordinate(b)
+	-- ++(77:0.55) coordinate(c)
+	.. controls ++(100:0.36) .. ++(110:0.725)
+	(a) -- ++(170:0.35) -- ++(80:0.225)
+	(b) -- ++(-10:0.475) -- ++(75:0.325)
+
+	(c) -- ++(130:0.425)
+	arc[start angle={180 - 130}, end angle=205, radius=0.225]
+
+	(c) -- ++(30:0.3)
+	-- ++(100:0.50) coordinate(d)
+	arc[start angle=160, end angle=-45, radius=0.225]
+	(d) arc[start angle=260, end angle=70, radius=0.275]
+	;
 
 \draw[blue, rotate=310] (1,0) circle(2pt);
 
