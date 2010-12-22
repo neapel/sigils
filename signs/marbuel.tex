@@ -1,0 +1,24 @@
+%\bg{0.4}{-0.3}
+
+\draw
+	let \n0={0.65} in (-2 - \n0,0) circle(\n0)
+	++(\n0,0) -- ++(3,0) coordinate(as)
+	arc[start angle=-90, end angle=-9, radius=1.8] coordinate(k)
+	(-0.5,0) coordinate(v0)
+	(-1.65,0) coordinate(v1)
+	let \p0=(k) in (0,-\y0) coordinate(m)
+	(v0 |- k) -- (v0 |- m)
+	(v1 |- k) -- (v1 |- m)
+	(as |- k) -- (as) -- ++(0,-1.225)
+	let \n2={0.7} in
+		-- ++(\n2,0) coordinate(x) -- ++(\n2,0)
+
+	(x) arc[start angle=-172.5, end angle=30, radius=1.1]
+
+	(x) ++(-0.25,-0.55) -- ++(2.7,0)
+
+	\foreach \M in {k, as |- k, v0 |- k, v1 |- k, v0 |- m, v1 |- m} {
+		let \n1={0.4} in
+		(\M) ++(-\n1,0) -- ++(2 * \n1,0)
+	}
+	;
