@@ -1,0 +1,19 @@
+%\bg{-0.3}{0.15}
+
+\draw
+	let \n0={0.4} in
+	{[rotate=-37.5]
+		(0,0) circle(1)
+		let \n1={1.8} in
+			(-\n1,0) coordinate(a) -- (\n1,0) coordinate(b)
+			(a) ++(0,\n0) circle(\n0) coordinate(a)
+			(b) ++(0,-\n0) circle(\n0) coordinate(b)
+	}
+	{[rotate=-9]
+		(a |- b) circle(\n0)
+	}
+	(a) -- ++(4,0) coordinate(k)
+	(k) ++(35:-1.2) coordinate(k1)
+	(k) -- ++(-35:-1.2) --(k1) -- cycle
+	(a) arc[start angle=90, end angle=170, x radius=2.35, y radius=2.45]
+	;

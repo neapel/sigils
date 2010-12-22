@@ -1,0 +1,23 @@
+%\bg{0.025}{0.175}
+
+\draw
+	(-3,1) -- (3,1)
+	(0,1) -- (0,-2)
+	let \n0={0.7} in ++(-\n0,0) -- ++(2 * \n0,0)
+	let \n0={1.25} in
+		let \n1={0.275} in
+			(1,1) -- ++(0,-\n0) ++(0,-\n1) circle(\n1)
+		let \n1={0.35} in
+			(2-0.05,1) -- ++(0,-\n0) coordinate(a0) ++(0,-\n1) coordinate(x)
+			\foreach \X in {1,2} {
+				(x) ++(90 + \X * 120:\n1) coordinate(a\X)
+			}
+			(a0) -- (a1) -- (a2) -- cycle
+
+	(-0.625,1.375) coordinate(w)
+	arc[start angle=0, end angle=165, x radius=1.1, y radius=0.95]
+	(w) .. controls ++(-90:0.45) and ++(35:1.5) .. (-2.675,-1.45)
+	let \n0={0.85} in
+	.. controls ++(27:\n0) and ++(180-27:\n0) .. (0.5,-1.35)
+	.. controls ++(180-27:-\n0) and ++(27:-\n0) .. ++(2,0)
+	;
