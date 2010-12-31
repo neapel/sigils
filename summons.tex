@@ -6,14 +6,24 @@
 \usetikzlibrary{intersections,calc}
 
 %% FONTS
-\font\mainTitleFont="Interstate:extend=1.06,letterspace=2,embolden=0.4" at 62pt
-\font\signNameFont="Interstate:extend=1.08,letterspace=0,embolden=2" at 27pt
-\font\signDescFont="Interstate:extend=1.08,letterspace=2,embolden=5" at 13pt
-\font\secTitleFont="Interstate:extend=1.09,letterspace=2,embolden=0.6" at 50pt
-\font\bottomTitleFont="Interstate:extend=1.06,letterspace=2,embolden=0.4" at 65pt
-
-\renewcommand{\baselinestretch}{1.2}
-
+\def\fontCase{1}
+\ifcase\fontCase
+	\def\fn{Interstate}
+	\font\mainTitleFont="\fn:extend=1.06,letterspace=2,embolden=0.4" at 62pt
+	\font\signNameFont="\fn:extend=1.08,letterspace=0,embolden=2" at 27pt
+	\font\signDescFont="\fn:extend=1.08,letterspace=2,embolden=5" at 13pt
+	\font\secTitleFont="\fn:extend=1.09,letterspace=2,embolden=0.6" at 50pt
+	\font\bottomTitleFont="\fn:extend=1.06,letterspace=2,embolden=0.4" at 65pt
+	\renewcommand{\baselinestretch}{1.2}
+\or
+	\def\fn{Yanone Kaffeesatz Thin:extend=1.2}
+	\font\mainTitleFont="\fn" at 67pt %62pt
+	\font\signNameFont="\fn,extend=1.45,embolden=0.5,letterspace=2" at 27pt
+	\font\signDescFont="\fn,embolden=2,letterspace=5" at 13pt
+	\font\secTitleFont="\fn" at 50pt
+	\font\bottomTitleFont="\fn" at 70pt %65pt
+	\renewcommand{\baselinestretch}{1.2}
+\fi
 %\color{red}
 
 
