@@ -4,8 +4,6 @@ summons-paged.pdf : summons-paged.tex signs/*.tex
 
 summons.pdf : summons.tex signs/*.tex
 
-all : fonttest.pdf
-
 %.pdf : %.tex
 	xelatex $*
 
