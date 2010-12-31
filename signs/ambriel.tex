@@ -1,11 +1,10 @@
 %\bg{0}{0.1}
 
-\draw (2,0) to (-2,0) to (0,3) coordinate(a)
-	(a) to (0,-3);
-\path[name path=ur] (-2,-3) to (2,3);
-\path[name path=dr] (a) to ++(3,-2);
+\draw (2,0) -- (-2,0) -- (0,3) coordinate(a) -- (0,-3);
+\path[name path=ur] (-2,-3) -- (2,3);
+\path[name path=dr] (a) -- ++(3/2,-2/2);
 \draw[name intersections={of=ur and dr}]
-	(-2,-3) to (intersection-1)
+	(-2,-3) -- (intersection-1)
 	let \p0=(a), \p1=(intersection-1) in
 	let \n0={\x0 - \x1}, \n1={\y0 - \y1} in
 	arc[start angle={-atan(2.0/3)},
