@@ -179,10 +179,12 @@
 		HERE FOLLOWS A LIST OF SEVERAL DEMONS\\[4mm]
 		AND THEIR SIGILS OF SUMMONING:};
 
-	\draw(Baseline)++(0,-17mm)node[K,font=\secTitleFont]{%
+	\draw(Baseline)++(0,-17mm)++(0,-5mm)node[K,font=\secTitleFont]{%
 		OTHER SIGILS OF NECISSITY INCLUDE:};
 
 	\newrow
+	% shift baseline up, odd free space:
+	\path (Baseline) ++(0,5mm) coordinate(Baseline);
 
 	\xsign{common1}
 	\xsign{common2}
@@ -227,7 +229,7 @@
 	\draw(SignHere)++(0,-43mm) node[S]{%
 		THE GREAT CIRCLE OF SUMMONING};
 
-	\draw(Baseline)++(0,-61mm)node[K,font=\bottomTitleFont]{%
+	\draw(Baseline)++(0,-61mm)++(0,-5mm)node[K,font=\bottomTitleFont]{%
 		WARNING: THIS KNOWLEDGE TO BE USED ONLY\\[5mm]%
 		IN TIMES OF EXTREME EMERGENCY};
 		
