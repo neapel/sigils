@@ -1,28 +1,42 @@
-\documentclass{article}%\documentclass[a0,portrait]{a0poster}
+\documentclass{article}
 \usepackage[a0paper,margin=5mm,paper height=1055mm,paper width=610mm]{geometry}
-
+\usepackage{fontspec}
 \usepackage{stringstrings}
 \usepackage{tikz,pgf}
 \usetikzlibrary{intersections,calc}
 
-%% FONTS
-\def\fontCase{1}
+%% FONTS 0:Interstate, 1:Yanone Kaffeesatz, 2:Fontin
+\def\fontCase{2}
+
+\newcommand{\fd}[4]{\newcommand{#1}{\fontspec[#2]{#4}\fontsize{#3}{#3}\selectfont}}
 \ifcase\fontCase
-	\def\fn{Interstate}
-	\font\mainTitleFont="\fn:extend=1.06,letterspace=2,embolden=0.4" at 62pt
-	\font\signNameFont="\fn:extend=1.08,letterspace=0,embolden=2" at 27pt
-	\font\signDescFont="\fn:extend=1.08,letterspace=2,embolden=5" at 13pt
-	\font\secTitleFont="\fn:extend=1.09,letterspace=2,embolden=0.6" at 50pt
-	\font\bottomTitleFont="\fn:extend=1.06,letterspace=2,embolden=0.4" at 65pt
-	\renewcommand{\baselinestretch}{1.2}
+	\fd\mainTitleFont{FakeBold=1,FakeStretch=1.06,WordSpace=15,LetterSpace=2}{62pt}{Interstate Thin}
+	\fd\signNameFont{FakeBold=2,FakeStretch=1.08,WordSpace=6}{27pt}{Interstate Thin}
+	\fd\signDescFont{FakeBold=5,FakeStretch=1.08,WordSpace=2,LetterSpace=2}{13pt}{Interstate Thin}
+	\fd\secTitleFont{FakeBold=0.45,FakeStretch=1.09,WordSpace=10,LetterSpace=2}{50pt}{Interstate Thin}
+	\fd\bottomTitleFont{FakeBold=1,FakeStretch=1.06,WordSpace=15,LetterSpace=2}{65pt}{Interstate Thin}
+	\newcommand{\Tr}[1]{\uppercase{#1}}
+	\newcommand{\signNameShift}{0mm}
 \or
-	\def\fn{Yanone Kaffeesatz Thin:extend=1.2}
-	\font\mainTitleFont="\fn" at 67pt %62pt
-	\font\signNameFont="\fn,extend=1.45,embolden=0.5,letterspace=2" at 27pt
-	\font\signDescFont="\fn,embolden=2,letterspace=5" at 13pt
-	\font\secTitleFont="\fn" at 50pt
-	\font\bottomTitleFont="\fn" at 70pt %65pt
-	\renewcommand{\baselinestretch}{1.2}
+	% get Kaffeesatz at: http://www.yanone.de/typedesign/kaffeesatz/
+	\fd\mainTitleFont{FakeStretch=1,WordSpace=15,LetterSpace=2}{67pt}{Yanone Kaffeesatz Thin}
+	\fd\signNameFont{FakeStretch=1,WordSpace=6}{27pt}{Yanone Kaffeesatz Regular}
+	\fd\signDescFont{FakeStretch=1,WordSpace=2,LetterSpace=2}{13pt}{Yanone Kaffeesatz Regular}
+	\fd\secTitleFont{FakeStretch=1,WordSpace=10,LetterSpace=2}{50pt}{Yanone Kaffeesatz Thin}
+	\fd\bottomTitleFont{FakeStretch=1,WordSpace=15,LetterSpace=2}{70pt}{Yanone Kaffeesatz Thin}
+	\newcommand{\Tr}[1]{\uppercase{#1}}
+	\newcommand{\signNameShift}{0mm}
+\or
+	% get Fontin at: http://www.josbuivenga.demon.nl/fontin.html
+	% get Fontin Sans at: http://www.josbuivenga.demon.nl/fontinsans.html
+	% get Delicious at: http://www.josbuivenga.demon.nl/delicious.html
+	\fd\mainTitleFont{}{62pt}{Fontin Bold}
+	\fd\signNameFont{}{27pt}{Delicious SmallCaps}
+	\fd\signDescFont{}{13pt}{Delicious Roman}
+	\fd\secTitleFont{}{50pt}{Fontin Sans Regular}
+	\fd\bottomTitleFont{}{65pt}{Fontin Bold}
+	\newcommand{\Tr}[1]{#1}
+	\newcommand{\signNameShift}{-2.5mm}
 \fi
 %\color{red}
 
@@ -75,11 +89,11 @@
 	\draw
 		(SignHere)node(SignNameNode)[
 			anchor=base, align=center, font=\signNameFont
-		]{#1}
+		]{\Tr{#1}}
 
-		(SignNameNode.south)node[
+		(SignNameNode.base)++(0,\signNameShift) node[
 			anchor=north, align=center, font=\signDescFont
-		]{#3}
+		]{\Tr{#3}}
 		;
 }
 
@@ -92,105 +106,105 @@
 %	\draw(0,0)node[anchor=north]{ \includegraphics[scale=2.25]{summons-cropped.png} };
 
 	\firstrow
-	\sign{ABYSS}{LORD OF CHAOS}
-	\sign{ACIEL}{THE GOD BURNER}
-	\sign{ADATIEL}{WALKS THE EARTH}
-	\sign{ADNACHIEL}{THE HUNTER DEMON}
-	\sign{AGIEL}{LORD OF CALAMITY}
-	\sign{AMBRIEL}{THE CHANGER}
-	\sign{AMNIXIEL}{DEMON OF THE LINES}
-	\sign{ANAEL}{DEMON OF LUST}
-	\sign{APADIEL}{OF HELL'S ELECTORATE\\ "MUSICIAN"}
-	\sign{ARATRON}{DEMON OF SORROW}\newrow
-	\sign{ARIEL}{OF HELL'S ELECTORATE\\ "HISTORIAN"}
-	\sign{AVACHIEL}{THE INQUISITOR}
-	\sign{AZERVIEL}{DEMON OF DEFEAT}
-	\sign{BABALEL}{SECOND DEMON OF WAR}
-	\sign{BARBIEL}{LORD OF ANCIENTS}
-	\sign{BARCHIEL}{OF HELL'S ELECTORATE\\ "MECHANIC"}
-	\sign{BEFAFES}{FIRST DEMON OF WAR}
-	\sign{BLISDON}{THE QUICK ONE}
-	\sign{BORNOGO}{LORD OF POWER}
-	\sign{BRORGES}{ARCHDEMON OF WOE}\newrow
-	\sign{BUTMONO}{DEMON OF GREED}
-	\sign{CAMAEL}{THE DESTROYER}
-	\sign{CASSIEL}{LORD OF ALL\\ CONSPIRATORS}
-	\sign{CASSRIEL}{OF HELL'S ELECTORATE\\ "POET"}
-	\sign{CHENOR}{THE WISH GRANTER}
-	\sign{DAGON}{THE GREAT FISH}
-	\sign{DECARAB}{THE BEAUTIFUL}
-	\sign{DIGDIN}{THE DISORDERED}
-	\sign{ELIM}{LORD OF ATTRITION}
-	\sign{EKUSHA}{THE GOD EYED}\newrow
-	\sign{EOLIGOS}{VISIBLE AND INVISIBLE}
-	\sign{FERUG}{THE RUSTING ONE}
-	\sign{FOCALOR}{THE DEMON THAT\\ DROWNS MEN}
-	\sign{FORCAS}{TEACH LOGICS AND\\ THE SECRETS OF\\ PLANTS AND GEMS}
-	\sign{FURTUR}{DEMON OF STORMS}
-	\sign{GAMIGIN}{THE HORSE LORD}
-	\sign{GARN}{THE KING TEMPTER}
-	\sign{GRACHIEL}{ARCHDEMON OF THE\\ DYING TIMES}
-	\sign{HAGITH}{DEMON OF JEALOUSY}
-	\sign{HAGONEL}{LORD UNDER GRACHIEL}\newrow
-	\sign{HAMALIEL}{LORD OF OBSESSIONS}
-	\sign{HANAEL}{THE ADVERSARIAL}
-	\sign[HASMODEL\\ \&~HASMODAI]{HASMODEL}{THE TWIN BULLS}
-	\sign{HISMAEL}{THE ACQUIRER}
-	\sign{IPOS}{KNOWS THINGS\\ TO COME AND PAST}
-	\sign{JOCHMUS}{THE FIRST SAVIOUR\\ OF HELL}
-	\sign{LAHAD}{THE DEVIL VOICE}
-	\sign{LESIFUGES}{BRINGS RICHES AND\\ SHORTENS LIFE}
-	\sign{LUCIFER}{THE MORNING STAR}
-	\sign{MALCHIDAEL}{DEMON OF IMPATIENCE}\newrow
-	\sign{MALPHAS}{THE TOWER BUILDER}
-	\sign{MARBUEL}{OF HELL'S ELECTORATE\\ "ARCHITECT"}
-	\sign{MARCHOSIAS}{GIVES AID IN BATTLES\\ A DEMON BOUND}
-	\sign{MEEOD}{THE LIFE RESTORER}
-	\sign{MEPHISTOPH}{LORD OF THE HOST}
-	\sign{MICZARIEL}{THE WARRIORESS}
-	\sign{MURIEL}{GREAT DEMON OF LIES}
-	\sign{NABERIUS}{LORD OF CUNNING}
-	\sign{NESTORATS}{THE FIRE MONSTER}
-	\sign{NYSROG}{LORD OF THE HOUSE\\ OF PRINCES}\newrow
-	\sign{OCH}{THE SUN SPEAKER}
-	\sign{OPHIEL}{LORD MESSENGER AND\\ GOD TEACHER}
-	\sign{ORIAS}{OF HELL'S ELECTORATE\\ "ASTRONOMER"}
-	\sign{OZGIN}{DEMON OF MADNESS}
-	\sign{PAIMON}{MASTER OF INFERNAL\\ CEREMONIES}
-	\sign{PARNIEL}{FIRST LORD UNDER\\ VEGUANIEL}
-	\sign{PHALEG}{DEMON OF DISCONTENT}
-	\sign{PSOHDON}{THE INCONSTANT}
-	\sign{RONOVE}{THE KNOWLEDGE STAFF}
-	\sign{RAUYM}{DEMON OF FILTH}\newrow
-	\sign{SABNAC}{DEMON OF POISONS}
-	\sign{SAKATH}{SECOND LORD UNDER\\ VEGUANIEL}
-	\sign{SALEOS}{OF HELL'S ELECTORATE\\ "PANDERER"}
-	\sign{SCHETALIM}{THE POLYGOD}
-	\sign{STYGAL}{BRINGS DEATH}
-	\sign{SULUTH}{THE GREAT ROBBER}
-	\sign{SURGAT}{WHO OPENS ALL LOCKS}
-	\sign{SYTRI}{LORD OF LUXURY}
-	\sign{TARTHANAC}{LORD OF GOLDIRON}
-	\sign{TEPHROS}{THE ASHMAKER AND\\ FEVER CURER}\newrow
-	\sign{UPHIR}{OF HELL'S ELECTORATE\\ "PHYSICIAN"}
-	\sign{VABAM}{WHO TELLS TRUE OF\\ HIDDEN TREASURES}
-	\sign{VALAC}{LORD OF SNAKES}
-	\sign{VEGUANIEL}{ARCHDEMON OF FORTUNE}
-	\sign{VEPAR}{THE WATER MASTER}
-	\sign{VETIS}{THE LIFE PROMISER}
-	\sign{ZABLAH}{OF HELL'S ELECTORATE\\ "LAWYER"}
-	\sign{ZAGAM}{LORD OF FORGERY}
-	\sign{ZURIEL}{THE STONE MASTER}
-	\sign{ZEPAR}{DEFORMS THE UNBORN}
+	\sign{Abyss}{Lord of Chaos}
+	\sign{Aciel}{The God Burner}
+	\sign{Adatiel}{Walks the Earth}
+	\sign{Adnachiel}{The Hunter Demon}
+	\sign{Agiel}{Lord of Calamity}
+	\sign{Ambriel}{The Changer}
+	\sign{Amnixiel}{Demon of the Lines}
+	\sign{Anael}{Demon of Lust}
+	\sign{Apadiel}{of Hell’s electorate\\ “Musician”}
+	\sign{Aratron}{Demon of Sorrow}\newrow
+	\sign{Ariel}{of Hell’s electorate\\ “Historian”}
+	\sign{Avachiel}{The Inquisitor}
+	\sign{Azerviel}{Demon of Defeat}
+	\sign{Babalel}{Second Demon of War}
+	\sign{Barbiel}{Lord of Ancients}
+	\sign{Barchiel}{of Hell’s electorate\\ “Mechanic”}
+	\sign{Befafes}{First Demon of War}
+	\sign{Blisdon}{The Quick One}
+	\sign{Bornogo}{Lord of Power}
+	\sign{Brorges}{Archdemon of Woe}\newrow
+	\sign{Butmono}{Demon of Greed}
+	\sign{Camael}{The Destroyer}
+	\sign{Cassiel}{Lord of all\\ Conspirators}
+	\sign{Cassriel}{of Hell’s Electorate\\ “Poet”}
+	\sign{Chenor}{The Wish Granter}
+	\sign{Dagon}{The Great Fish}
+	\sign{Decarab}{The Beautiful}
+	\sign{Digdin}{The Disordered}
+	\sign{Elim}{Lord of Attrition}
+	\sign{Ekusha}{The God Eyed}\newrow
+	\sign{Eoligos}{Visible and Invisible}
+	\sign{Ferug}{The Rusting One}
+	\sign{Focalor}{The Demon that\\ drowns men}
+	\sign{Forcas}{Teach Logics and\\ the secrets of\\ plants and gems}
+	\sign{Furtur}{Demon of Storms}
+	\sign{Gamigin}{The Horse Lord}
+	\sign{Garn}{The King Tempter}
+	\sign{Grachiel}{Archdemon of the\\ Dying Times}
+	\sign{Hagith}{Demon of Jealousy}
+	\sign{Hagonel}{Lord under Grachiel}\newrow
+	\sign{Hamaliel}{Lord of Obsessions}
+	\sign{Hanael}{The Adversarial}
+	\sign[Hasmodel\\ \&~Hasmodai]{hasmodel}{The Twin Bulls}
+	\sign{Hismael}{The Acquirer}
+	\sign{Ipos}{Knows things\\ to come and past}
+	\sign{Jochmus}{The First Saviour\\ of Hell}
+	\sign{Lahad}{The Devil Voice}
+	\sign{Lesifuges}{Brings riches and\\ shortens life}
+	\sign{Lucifer}{The Morning Star}
+	\sign{Malchidael}{Demon of Impatience}\newrow
+	\sign{Malphas}{The Tower Builder}
+	\sign{Marbuel}{of Hell’s electorate\\ “Architect”}
+	\sign{Marchosias}{Gives aid in battles\\ A Demon bound}
+	\sign{Meeod}{The Life Restorer}
+	\sign{Mephistoph}{Lord of the Host}
+	\sign{Miczariel}{The Warrioress}
+	\sign{Muriel}{Great Demon of Lies}
+	\sign{Naberius}{Lord of Cunning}
+	\sign{Nestorats}{The Fire Monster}
+	\sign{Nysrog}{Lord of the House\\ of Princes}\newrow
+	\sign{Och}{The Sun Speaker}
+	\sign{Ophiel}{Lord Messenger and\\ God Teacher}
+	\sign{Orias}{of Hell’s electorate\\ “Astronomer”}
+	\sign{Ozgin}{Demon of Madness}
+	\sign{Paimon}{Master of Infernal\\ Ceremonies}
+	\sign{Parniel}{First Lord under\\ Veguaniel}
+	\sign{Phaleg}{Demon of Discontent}
+	\sign{Psohdon}{The Inconstant}
+	\sign{Ronove}{The Knowledge Staff}
+	\sign{Rauym}{Demon of Filth}\newrow
+	\sign{Sabnac}{Demon of Poisons}
+	\sign{Sakath}{Second Lord under\\ Veguaniel}
+	\sign{Saleos}{of Hell’s electorate\\ “Panderer”}
+	\sign{Schetalim}{The Polygod}
+	\sign{Stygal}{Brings death}
+	\sign{Suluth}{The Great Robber}
+	\sign{Surgat}{Who opens all locks}
+	\sign{Sytri}{Lord of Luxury}
+	\sign{Tarthanac}{Lord of Goldiron}
+	\sign{Tephros}{The Ashmaker and\\ Fever Curer}\newrow
+	\sign{Uphir}{of Hell’s electorate\\ “Physician”}
+	\sign{Vabam}{Who tells true of\\ hidden treasures}
+	\sign{Valac}{Lord of Snakes}
+	\sign{Veguaniel}{Archdemon of Fortune}
+	\sign{Vepar}{The Water Master}
+	\sign{Vetis}{The Life Promiser}
+	\sign{Zablah}{of Hell’s electorate\\ “Lawyer”}
+	\sign{Zagam}{Lord of Forgery}
+	\sign{Zuriel}{The Stone Master}
+	\sign{Zepar}{Deforms the unborn}
 
 	\tikzset{K/.style={anchor=north, align=center}}
 
-	\draw(0,-8mm)node[K,font=\mainTitleFont]{%
-		HERE FOLLOWS A LIST OF SEVERAL DEMONS\\[4mm]
-		AND THEIR SIGILS OF SUMMONING:};
+	\draw(0,-8mm)node[K,font=\mainTitleFont]{\Tr{%
+		Here follows a list of several Demons\\%
+		and their Sigils of Summoning:}};
 
-	\draw(Baseline)++(0,-17mm)++(0,-5mm)node[K,font=\secTitleFont]{%
-		OTHER SIGILS OF NECISSITY INCLUDE:};
+	\draw(Baseline)++(0,-17mm)++(0,-5mm)node[K,font=\secTitleFont]{\Tr{%
+		Other Sigils of necissity include:}};
 
 	\newrow
 	% shift baseline up, odd free space:
@@ -202,47 +216,46 @@
 	\xsign{common4}
 	\draw ($(Column2)!0.5!(Column3)$) coordinate(Column25)
 		(Column25 |- Baseline) ++(0,-40mm) coordinate(B)
-		(B) node[K, anchor=south, font=\signNameFont]{%
-			TO SUMMON A COMMON DEMON OF HELL}
-		(B) node[K, font=\signDescFont]{%
-			OF WHICH ALL FOUR ARE A NECESSITY};
+		(B) node[K, anchor=south, font=\signNameFont]{\Tr{%
+			To summon a common Demon of Hell}}
+		(B) node[K, font=\signDescFont]{\Tr{%
+			Of which all four are a necessity}};
 
 	\newcommand{\TextHere}{++(0,-36mm)}
 	\tikzset{S/.style={K,font=\signDescFont}}
 
 	\xsign{unholy}
-	\draw (SignHere)\TextHere node[S]{%
-		A COMMON SIGIL\\%
-		NEEDED TO SUMMON\\%
-		AN UNHOLY POWER};
+	\draw (SignHere)\TextHere node[S]{\Tr{%
+		A common Sigil\\%
+		needed to summon\\%
+		an Unholy Power}};
 
 	\xsign{kaliyuga}
-	\draw (SignHere)\TextHere node[S]{%
-		KALI YUGA, AN\\%
-		ANCIENT SORCERY};
+	\draw (SignHere)\TextHere node[S]{\Tr{%
+		Kali Yuga, an\\%
+		ancient sorcery}};
 
 	\xsign{myriad}
-	\draw (SignHere)\TextHere node[S]{%
-		TO SUMMON A MYRIAD\\%
-		WHICH IS 20,736\\%
-		OF HELL'S MINIONS};
+	\draw (SignHere)\TextHere node[S]{\Tr{%
+		To summon a Myriad\\%
+		which is 20,736\\%
+		of Hell's minions}};
 
 	\xsign{union}
-	\draw(SignHere)\TextHere node[S]{%
-		TO REQUEST A\\%
-		FIENDISH UNION WITH\\%
-		INCUBI OR SUCCUBI};
+	\draw(SignHere)\TextHere node[S]{\Tr{%
+		To request a\\%
+		fiendish union with\\%
+		Incubi or Succubi}};
 
 	\hsign{10mm}{circle}{%
 		($(Column9)!0.5!(Column10)$) coordinate(Column95)
 		(Column95 |- Baseline)}
-	\draw(SignHere)++(0,-43mm) node[S]{%
-		THE GREAT CIRCLE OF SUMMONING};
+	\draw(SignHere)++(0,-43mm) node[S]{\Tr{%
+		The Great Circle of Summoning}};
 
-	\draw(Baseline)++(0,-61mm)++(0,-5mm)node[K,font=\bottomTitleFont]{%
-		WARNING: THIS KNOWLEDGE TO BE USED ONLY\\[5mm]%
-		IN TIMES OF EXTREME EMERGENCY};
-		
+	\draw(Baseline)++(0,-61mm)++(0,-5mm)node[K,font=\bottomTitleFont]{\Tr{%
+		Warning: This knowledge to be used only\\%
+		in times of extreme emergency}};
 	;
 \end{tikzpicture}
 \end{document}
